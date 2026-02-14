@@ -1,0 +1,57 @@
+* {
+  font-family: "Outfit";
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  /* Brand */
+  --color-primary: #f5b8da;
+  --color-primary-hover: #d5def8;
+
+  /* Backgrounds */
+  --color-bg: #faf4e4;
+  --color-surface: #f5f5f5;
+
+  /* Text */
+  --color-text-primary: #161616;
+  --color-text-secondary: #dadbd8;
+
+  /* Borders */
+  --color-border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  /* Brand */
+  --color-primary: #33b3ff;
+  --color-primary-hover: #1aa3f5;
+
+  /* Backgrounds */
+  --color-bg: #0e1115;
+  --color-surface: #1a1a1a;
+
+  /* Text */
+  --color-text-primary: #ededed;
+  --color-text-secondary: #8fa3bd;
+
+  /* Borders */
+  --color-border: #2a2a2a;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+button {
+  background-color: var(--color-bg);
+  outline: none;
+  padding: 0.2rem;
+}
+
+.border-radius-btn {
+  border-radius: 0.6rem;
+}
