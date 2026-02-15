@@ -30,14 +30,15 @@ const hilmar = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Waseem's portfolio",
+  title: "Waseem Alamad | Software Developer Portfolio",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.png", sizes: "32x32" },
     ],
   },
-  description: "",
+  description:
+    "My portfolio where you can learn more about me and get a glance at my super cool projects 🤓",
 };
 
 export function generateStaticParams() {
