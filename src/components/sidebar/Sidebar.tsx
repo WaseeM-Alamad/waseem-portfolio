@@ -1,91 +1,94 @@
 "use client";
-import React, { useState } from "react";
 import "@/styles/sidebar.css";
-import { useTranslations } from "next-intl";
-import { Contact2, Home, Info, LucideGavel } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import ThemeToggle from "../tools/ThemeToggle";
+import LocaleSwitcher from "../tools/LocaleSwitcher";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { projects, sections } from "@/utils/sectionsData";
+import { useSmoothScroll } from "../../contexts/SmoothScrollContext";
 
-const Sidebar = () => {
-  const t = useTranslations("nav");
-  const [selectedSection, setSelectedSection] = useState("home");
+const Sidebar = ({ currentSection }: { currentSection: string }) => {
+  const locale = useLocale();
+  const isEn = locale === "en";
+  const t = useTranslations("sidebar");
 
-  const sections = [
-    {
-      id: "home",
-      title: t("home"),
-      Icon: Home,
-    },
-    {
-      id: "about",
-      title: t("about"),
-      Icon: Info,
-    },
-    {
-      id: "skills",
-      title: t("skills"),
-      Icon: LucideGavel,
-    },
-    // {
-    //   title: t("projects"),
-    //
-    // },
-    {
-      id: "contact",
-      title: t("contact"),
-      Icon: Contact2,
-    },
-  ];
+  const { scrollYProgress } = useScroll();
+  const { scrollTo } = useSmoothScroll();
 
-  const projects = [
-    {
-      id: "notopia",
-      title: "Notopia",
-      Icon: Home,
-    },
-    {
-      id: "caterfy",
-      title: "Caterfy",
-      Icon: Contact2,
-    },
-  ];
+  const height = useTransform(scrollYProgress, [0, 1], ["5%", "100%"]);
+
+  const scrollIntoView = (id: string) => {
+    scrollTo(`#${id}`);
+  };
+
+  const capitalizeInitial = (string: string) => {
+    return string[0].toUpperCase() + string.slice(1);
+  };
 
   return (
-    <div className="sidebar-wrapper">
-      <aside>
-        <div className="logo">waseem</div>
-        <div className="side-sections-container">
-          <div className="side-label">General</div>
-          {sections.map(({ id, title, Icon }) => {
-            return (
-              <div
-                key={title}
-                className={selectedSection === id ? "selected" : ""}
-              >
-                <button onClick={() => setSelectedSection(id)}>
-                  <Icon size={18} strokeWidth={1.5} />
-                  <span>{title}</span>
-                </button>
-              </div>
-            );
-          })}
-        </div>
-        <div className="side-sections-container">
-          <div className="side-label">Projects</div>
-          {projects.map(({ id, title, Icon }) => {
-            return (
-              <div
-                key={title}
-                className={selectedSection === id ? "selected" : ""}
-              >
-                <button onClick={() => setSelectedSection(id)}>
-                  <Icon size={18} strokeWidth={1.5} />
-                  <span>{title}</span>
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </aside>
-    </div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ x: isEn ? -150 : 150 }}
+        animate={{ x: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 500,
+          damping: 50,
+          mass: 1,
+        }}
+        className="sidebar-wrapper"
+      >
+        <aside>
+          <div className="logo">waseem</div>
+          <div className="top-settings">
+            <LocaleSwitcher />
+            <ThemeToggle />
+          </div>
+          <div className="side-label" style={{ marginTop: "2rem" }}>
+            {t("general")}
+          </div>
+          <div className="side-sections-wrapper">
+            <motion.div style={{ height }} className="side-slider" />
+            <div className="side-sections-container" style={{ margin: "0" }}>
+              {sections.map(({ id, Icon }) => {
+                return (
+                  <div
+                    key={id}
+                    className={currentSection === id ? "selected" : ""}
+                  >
+                    <button onClick={() => scrollIntoView(id)}>
+                      <Icon size={18} strokeWidth={1.5} />
+                      <span>{t(id)}</span>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="side-sections-container">
+              <div className="side-label">{t("projects")}</div>
+              {projects.map(({ id, Icon }) => {
+                return (
+                  <div
+                    key={id}
+                    className={currentSection === id ? "selected" : ""}
+                  >
+                    <button onClick={() => scrollIntoView(id)}>
+                      <Icon size={18} strokeWidth={1.5} />
+                      <span>{capitalizeInitial(id)}</span>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

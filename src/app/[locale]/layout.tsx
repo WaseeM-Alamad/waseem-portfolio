@@ -1,18 +1,34 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import Navbar from "@/components/navbar/Navbar";
-import Sidebar from "@/components/sidebar/Sidebar";
+import localFont from "next/font/local";
+import { SmoothScrollProvider } from "@/contexts/SmoothScrollContext";
 
-const dmSans = Outfit({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "700"],
+const hilmar = localFont({
+  src: [
+    {
+      path: "../../fonts/Hilmar-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/Hilmar-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/Hilmar-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-hilmar",
+  display: "swap",
 });
+
 export const metadata: Metadata = {
   title: "Waseem's portfolio",
   icons: {
@@ -47,14 +63,12 @@ export default async function RootLayout({
       suppressHydrationWarning
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
+      data-section="default"
     >
-      <body suppressHydrationWarning className={dmSans.variable}>
+      <body suppressHydrationWarning className={hilmar.variable}>
         <NextIntlClientProvider>
           {/* <Navbar /> */}
-          <div style={{display: "flex"}}>
-            <Sidebar />
-            {children}
-          </div>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>
     </html>

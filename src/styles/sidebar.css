@@ -1,35 +1,22 @@
 .sidebar-wrapper {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-bg);
-  height: calc(100dvh - 1.6rem);
-  width: 14rem;
-  border-radius: 1.5rem;
-  margin: 0.8rem 0;
-  margin-inline-start: 0.8rem;
-}
-
-.sidebar-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* background: rgba(0, 0, 0, 0.9); */
-  background: #111111;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  height: calc(100dvh);
+  box-sizing: border-box;
 }
 
 aside {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  border-end-end-radius: 1.5rem;
+  border-start-end-radius: 1.5rem;
+  height: fit-content;
+  width: 12rem;
   display: flex;
+  /* gap: 2rem; */
   flex-direction: column;
   padding: 1rem 0.5rem;
   padding-top: 1.3rem;
+  background: #111111;
   color: var(--color-text-secondary);
   box-sizing: border-box;
   user-select: none;
@@ -38,6 +25,7 @@ aside {
 .logo {
   font-size: 1.8rem;
   margin: 0 auto;
+  margin-bottom: 1.2rem;
   font-weight: 600;
   letter-spacing: 3;
   cursor: pointer;
@@ -46,12 +34,12 @@ aside {
 .side-label {
   opacity: 0.7;
   font-size: 0.8rem;
-  padding-inline-start: 0.9rem;
+  padding-inline-start: 0.7rem;
   margin-bottom: 0.5rem;
 }
 
 .side-sections-container {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .side-sections-container button {
@@ -68,8 +56,9 @@ aside {
   color: var(--color-text-secondary);
   /* border-radius: 0.8rem; */
   cursor: pointer;
-  padding: 0.7rem 0.9rem;
-  border-inline-start: 1px solid transparent;
+  padding: 0.7rem 0.4rem;
+  padding-inline-start: 0.7rem;
+  /* border-inline-start: 1px solid transparent; */
   transition: all 0.2s ease;
 }
 
@@ -79,6 +68,55 @@ aside {
 
 .side-sections-container .selected button {
   color: var(--color-primary);
+  /* border-color: var(--color-primary); */
+  /* padding-inline-start: 1rem; */
+  /* margin-inline-start: 0.3rem; */
+}
+
+.top-settings {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0 .5rem;
+}
+
+.top-toggle {
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+
+  padding: 0.5rem 0.6rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  user-select: none;
+  transition: border 0.2s ease;
+}
+
+.top-toggle > * {
+  transition: color 0.2s ease;
+}
+
+.top-toggle:hover {
   border-color: var(--color-primary);
-  margin-inline-start: 0.3rem;
+}
+
+.top-toggle:hover > * {
+  color: var(--color-primary);
+}
+
+.side-sections-wrapper {
+  position: relative;
+}
+
+.side-slider {
+  position: absolute;
+  top: 0;
+  inset-inline-start: -.5rem;
+  width: .3rem;
+  border-end-end-radius: .5rem;
+  border-start-end-radius: .5rem;
+  background-color: var(--color-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }

@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
+import Main from "@/components/Main";
 
 export default function Home({
   params,
@@ -9,5 +10,5 @@ export default function Home({
   const { locale } = use(params);
   setRequestLocale(locale);
 
-  return <div style={{height: '100dvh'}}></div>;
+  return <Main />;
 }

@@ -1,9 +1,10 @@
 {
-  "nav": {
+  "sidebar": {
     "home": "الرئيسية",
     "about": "عني",
     "skills": "المهارات",
     "projects": "المشاريع",
-    "contact": "تواصل"
+    "contact": "تواصل",
+    "general": "عام"
   }
 }

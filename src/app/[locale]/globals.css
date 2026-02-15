@@ -1,49 +1,75 @@
 * {
-  font-family: "Outfit";
+  font-family: var(--font-hilmar), sans-serif;
   padding: 0;
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 :root {
-  /* Brand */
-  --color-primary: #f5b8da;
+  --color-primary: #f5d867;
   --color-primary-hover: #d5def8;
 
-  /* Backgrounds */
-  --color-bg: #faf4e4;
+  --color-bg: #f8dc97;
   --color-surface: #f5f5f5;
 
-  /* Text */
   --color-text-primary: #161616;
   --color-text-secondary: #dadbd8;
 
-  /* Borders */
   --color-border: #e5e7eb;
 }
 
 [data-theme="dark"] {
-  /* Brand */
   --color-primary: #33b3ff;
   --color-primary-hover: #1aa3f5;
 
-  /* Backgrounds */
   --color-bg: #0e1115;
   --color-surface: #1a1a1a;
 
-  /* Text */
   --color-text-primary: #ededed;
   --color-text-secondary: #8fa3bd;
 
-  /* Borders */
   --color-border: #2a2a2a;
+}
+
+[data-section="default"] {
+  --color-bg: #64ffe5;
+  --color-primary: #1cfad5;
+}
+
+[data-theme="dark"][data-section="default"] {
+  --color-bg: #004947; /* very dark teal / almost black */
+  --color-primary: #33fff1;
+}
+
+[data-section="notopia"] {
+  --color-bg: #6488ff;
+  --color-primary: #0791f3;
+}
+
+[data-theme="dark"][data-section="notopia"] {
+  --color-bg: #002b5f;
+  --color-primary: #38bdf8;
+}
+
+[data-section="caterfy"] {
+  --color-bg: #9b6eff;
+  --color-primary: #7640ec;
+}
+
+[data-theme="dark"][data-section="caterfy"] {
+  --color-bg: #230064; /* deep purple / almost black */
+  --color-primary: #b189ff;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--foreground);
   transition:
-    background-color 0.3s,
-    color 0.3s;
+    background-color 0.9s ease,
+    color 0.9s ease;
 }
 
 button {
@@ -54,4 +80,33 @@ button {
 
 .border-radius-btn {
   border-radius: 0.6rem;
+}
+
+main {
+  padding-inline-start: 12rem;
+}
+
+.svg-path {
+  position: relative;
+
+  top: 25vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.svg-path svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  height: 50rem;
 }
