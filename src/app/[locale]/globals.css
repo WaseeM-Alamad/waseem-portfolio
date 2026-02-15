@@ -16,9 +16,9 @@
   --color-surface: #f5f5f5;
 
   --color-text-primary: #161616;
-  --color-text-secondary: #dadbd8;
+  --color-text-secondary: #dadada;
 
-  --color-border: #e5e7eb;
+  --color-border: #868686;
 }
 
 [data-theme="dark"] {
@@ -29,29 +29,29 @@
   --color-surface: #1a1a1a;
 
   --color-text-primary: #ededed;
-  --color-text-secondary: #8fa3bd;
+  --color-text-secondary: #bdbdbd;
 
-  --color-border: #2a2a2a;
+  --color-border: #4e4e4e;
 }
 
 [data-section="default"] {
   --color-bg: #64ffe5;
-  --color-primary: #1cfad5;
+  --color-primary: #08e4bf;
 }
 
 [data-theme="dark"][data-section="default"] {
   --color-bg: #004947; /* very dark teal / almost black */
-  --color-primary: #33fff1;
+  --color-primary: #13aca7;
 }
 
 [data-section="notopia"] {
   --color-bg: #6488ff;
-  --color-primary: #0791f3;
+  --color-primary: #0085e4;
 }
 
 [data-theme="dark"][data-section="notopia"] {
   --color-bg: #002b5f;
-  --color-primary: #38bdf8;
+  --color-primary: #0558be;
 }
 
 [data-section="caterfy"] {
@@ -84,29 +84,32 @@ button {
 
 main {
   padding-inline-start: 12rem;
+  overflow-y: hidden;
 }
 
 .svg-path {
-  position: relative;
-
+  position: absolute;
   top: 25vh;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 100%;
-  height: 100%;
+  pointer-events: none;
   z-index: -1;
 }
 
 .svg-path svg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
   height: 100%;
 }
-
 section {
   height: 50rem;
+  color: var(--color-text-primary);
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 2rem;
+  box-sizing: border-box;
+  transition: color 0.5s ease;
+}
+
+.svg-path svg path {
+  transition: stroke 0.5s ease;
 }

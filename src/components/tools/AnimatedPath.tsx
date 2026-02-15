@@ -41,23 +41,6 @@ const AnimatedPath = ({
 
   return (
     <div className="svg-path">
-      {/* <svg
-        style={{ transform: locale === "en" ? "scaleX(-1)" : "none" }}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1944.2 6151.5"
-        preserveAspectRatio="none"
-      >
-        <path
-          ref={pathRef}
-          fill="none"
-          stroke="var(--color-primary)"
-          strokeLinecap="round"
-          strokeWidth="500"
-          d="M1085 250c-868 126.5-961 907-29.5 1453S1397 3353 733 3318s-606-718-53.6-808"
-          id="main-path"
-        ></path>
-      </svg> */}
-
       <svg
         style={{ transform: locale === "en" ? "scaleX(-1)" : "none" }}
         xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +51,7 @@ const AnimatedPath = ({
         <path
           ref={pathRef}
           fill="none"
-          stroke="#8ED462"
+          stroke="var(--color-primary)"
           strokeLinecap="round"
           strokeWidth="500"
           d="M1085 250c-868 126.5-961 907-29.5 1453S1397 3353 733 3318s-606-718-53.6-808"
