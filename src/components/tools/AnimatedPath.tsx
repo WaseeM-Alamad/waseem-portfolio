@@ -27,8 +27,8 @@ const AnimatedPath = ({
       ease: "none",
       scrollTrigger: {
         trigger: pathRef.current,
-        start: "top 30%", // when SVG enters screen
-        end: "bottom 120%", // when SVG leaves
+        start: "top 30%",
+        end: "bottom 120%",
         scrub: 0.6,
       },
     });
@@ -57,14 +57,6 @@ const AnimatedPath = ({
           d="M1085 250c-868 126.5-961 907-29.5 1453S1397 3353 733 3318s-606-718-53.6-808"
           id="main-path"
         ></path>{" "}
-        {/* <path
-          fill="none"
-          stroke="#8ED462"
-          stroke-linecap="round"
-          stroke-width="500"
-          d="M679.3 2510c552.3-90 1689.3 743.4 475.6 1689-985 767.5-234 1313-234 1702.5"
-          id="secondary-path"
-        ></path>{" "} */}
       </svg>
     </div>
   );

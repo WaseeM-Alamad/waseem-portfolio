@@ -1,19 +1,9 @@
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const About = ({
-  onSectionView,
-}: {
-  onSectionView: (value: string) => void;
-}) => {
-  return (
-    <motion.section
-      id="about"
-      onViewportEnter={() => onSectionView("about")}
-      viewport={{ amount: 0.5 }}
-    >
-      About
-    </motion.section>
-  );
+const About = () => {
+  const t = useTranslations("sidebar");
+  return <motion.section id="about">{t("about")}</motion.section>;
 };
 
 export default About;

@@ -6,5 +6,9 @@
     "projects": "Projects",
     "contact": "Contact",
     "general": "General"
+  },
+  "home": {
+    "WaseeM": "WaseeM",
+    "myNameIs": "My name is"
   }
 }

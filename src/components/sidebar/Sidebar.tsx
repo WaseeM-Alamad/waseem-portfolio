@@ -49,7 +49,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
-          <div className="side-label" style={{ marginTop: "2rem" }}>
+          <div id="general-label" className="side-label" style={{ marginTop: "2rem" }}>
             {t("general")}
           </div>
           <div className="side-sections-wrapper">
@@ -70,7 +70,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
               })}
             </div>
             <div className="side-sections-container">
-              <div className="side-label">{t("projects")}</div>
+              <div id="projects-label" className="side-label">{t("projects")}</div>
               {projects.map(({ id, Icon }) => {
                 return (
                   <div

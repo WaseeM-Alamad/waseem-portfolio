@@ -10,7 +10,7 @@ aside {
   border-end-end-radius: 1.5rem;
   border-start-end-radius: 1.5rem;
   height: fit-content;
-  width: 12rem;
+  width: var(--sidebar-width);
   display: flex;
   /* gap: 2rem; */
   flex-direction: column;
@@ -23,12 +23,12 @@ aside {
 }
 
 .logo {
-  font-size: 1.8rem;
-  margin: 0 auto;
+  font-size: 1.5rem;
   margin-bottom: 1.2rem;
   font-weight: 600;
   letter-spacing: 3;
   cursor: pointer;
+  margin-inline-start: 0.3rem;
 }
 
 .side-label {
@@ -76,7 +76,7 @@ aside {
 .top-settings {
   display: flex;
   gap: 0.6rem;
-  padding: 0 .5rem;
+  padding: 0 0.3rem;
 }
 
 .top-toggle {
@@ -113,10 +113,16 @@ aside {
 .side-slider {
   position: absolute;
   top: 0;
-  inset-inline-start: -.5rem;
-  width: .3rem;
-  border-end-end-radius: .5rem;
-  border-start-end-radius: .5rem;
+  inset-inline-start: -0.5rem;
+  width: 0.3rem;
+  border-end-end-radius: 0.5rem;
+  border-start-end-radius: 0.5rem;
   background-color: var(--color-primary);
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+.selected-label {
+  color: var(--color-primary);
 }

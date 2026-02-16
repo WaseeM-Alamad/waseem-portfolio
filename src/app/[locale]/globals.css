@@ -9,13 +9,15 @@
 }
 
 :root {
-  --color-primary: #f5d867;
+  --sidebar-width: 10rem;
+
+  --color-primary: #ff5b5b;
   --color-primary-hover: #d5def8;
 
-  --color-bg: #f8dc97;
+  --color-bg: #fbf1f1;
   --color-surface: #f5f5f5;
 
-  --color-text-primary: #161616;
+  --color-text-primary: #2c2e2a;
   --color-text-secondary: #dadada;
 
   --color-border: #868686;
@@ -34,9 +36,20 @@
   --color-border: #4e4e4e;
 }
 
+::selection {
+  background: var(--color-primary);
+  color: #101010;
+}
+
+/* Firefox */
+::-moz-selection {
+  background: var(--selection);
+  color: #fff;
+}
+
 [data-section="default"] {
-  --color-bg: #64ffe5;
-  --color-primary: #08e4bf;
+  --color-bg: #f5f1e4;
+  --color-primary: #2dee6d;
 }
 
 [data-theme="dark"][data-section="default"] {
@@ -45,8 +58,8 @@
 }
 
 [data-section="notopia"] {
-  --color-bg: #6488ff;
-  --color-primary: #0085e4;
+  --color-bg: #f1f6fb;
+  --color-primary: #5bb6ff;
 }
 
 [data-theme="dark"][data-section="notopia"] {
@@ -55,13 +68,13 @@
 }
 
 [data-section="caterfy"] {
-  --color-bg: #9b6eff;
-  --color-primary: #7640ec;
+  --color-bg: #f9f1fb;
+  --color-primary: #e45bff;
 }
 
 [data-theme="dark"][data-section="caterfy"] {
-  --color-bg: #230064; /* deep purple / almost black */
-  --color-primary: #b189ff;
+  --color-bg: #f6f2fb; /* deep purple / almost black */
+  --color-primary: #a874ff;
 }
 
 body {
@@ -83,7 +96,7 @@ button {
 }
 
 main {
-  padding-inline-start: 12rem;
+  padding-inline-start: var(--sidebar-width);
   overflow-y: hidden;
 }
 
@@ -101,15 +114,26 @@ main {
   height: 100%;
 }
 section {
-  height: 50rem;
+  min-height: 50rem;
   color: var(--color-text-primary);
   font-size: 3rem;
   font-weight: 500;
-  padding: 2rem;
+  padding: 1rem 5rem;
+  padding-bottom: 3rem;
   box-sizing: border-box;
+  /* will-change: transform; */
+  transition: color 0.5s ease;
+}
+
+section > * {
   transition: color 0.5s ease;
 }
 
 .svg-path svg path {
   transition: stroke 0.5s ease;
+}
+
+.home {
+  padding: 3rem 6rem;
+  padding-top: 5rem;
 }
