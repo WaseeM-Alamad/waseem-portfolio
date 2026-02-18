@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <motion.section id="contact">
       <span style={{ color: "var(--color-primary)" }}>
-        I build fast, scalable web applications with real-world architecture.
+        {useTranslations("lorem")("text")}
       </span>
     </motion.section>
   );

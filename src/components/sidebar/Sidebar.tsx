@@ -23,6 +23,10 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
   const height = useTransform(scrollYProgress, [0, 1], ["5%", "100%"]);
 
   const scrollIntoView = (id: string) => {
+    if (id === "home") {
+      scrollTo(0);
+      return;
+    }
     scrollTo(`#${id}`);
   };
 
@@ -33,13 +37,13 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ x: isEn ? -150 : 150 }}
+        initial={{ x: isEn ? -200 : 200 }}
         animate={{ x: 0 }}
         transition={{
           type: "spring",
-          stiffness: 500,
+          stiffness: 400,
           damping: 50,
-          mass: 1,
+          mass: .3,
         }}
         className="sidebar-wrapper"
       >

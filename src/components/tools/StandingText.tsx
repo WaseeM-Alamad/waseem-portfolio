@@ -1,14 +1,25 @@
 import { ReactNode, useEffect, useRef, Children, isValidElement } from "react";
 import { gsap } from "gsap";
 
-export const StandingText = ({ children }: { children: ReactNode }) => {
+export const StandingText = ({
+  children,
+  once = false,
+}: {
+  children: ReactNode;
+  once?: boolean | false;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const hasAnimatedRef = useRef<boolean>(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
+        if (hasAnimatedRef.current && once) {
+          observer.disconnect();
+          return;
+        }
         const entry = entries[0];
         if (entry.isIntersecting) {
           const words = containerRef.current!.querySelectorAll(".word-inner");
@@ -27,6 +38,7 @@ export const StandingText = ({ children }: { children: ReactNode }) => {
             stagger: 0.15,
           });
         }
+        hasAnimatedRef.current = true;
       },
       { threshold: 0.1 },
     );
@@ -34,7 +46,7 @@ export const StandingText = ({ children }: { children: ReactNode }) => {
     observer.observe(containerRef.current);
 
     return () => observer.disconnect();
-  }, []);
+  }, [hasAnimatedRef]);
 
   const wrapWord = (word: string, index: number) => (
     <span

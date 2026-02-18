@@ -1,0 +1,41 @@
+.wave-text {
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.wave-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.wave-container {
+  overflow: hidden;
+}
+
+.wave-tile {
+  display: block;
+  flex-shrink: 0;
+}
+
+.wave-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-wave 4s linear infinite;
+}
+
+.wave-track-rtl {
+  display: flex;
+  width: max-content;
+  animation: scroll-wave-rtl 4s linear infinite;
+}
+
+@keyframes scroll-wave {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--wave-width))); }
+}
+
+@keyframes scroll-wave-rtl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--wave-width)); }
+}

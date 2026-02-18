@@ -1,4 +1,7 @@
 {
+  "lorem": {
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias facere, numquam magnam suscipit, commodi iste est similique asperiores quaerat nobis itaque. Praesentium quibusdam beatae deserunt, eveniet nulla sunt veniam adipisci.Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias facere, numquam magnam suscipit, commodi iste est similique asperiores quaerat nobis itaque. Praesentium quibusdam beatae deserunt, eveniet nulla sunt veniam adipisci."
+  },
   "sidebar": {
     "home": "Home",
     "about": "About",
@@ -9,6 +12,10 @@
   },
   "home": {
     "WaseeM": "WaseeM",
-    "myNameIs": "My name is"
+    "myNameIs": "My name is",
+    "crafting": "Crafting",
+    "interactive": "Interactive",
+    "webExperiences": "Web Experiences",
+    "homeDesc": "Full-Stack Engineer building scalable, performance-driven web\n & mobile experiences with clean architecture and refined motion."
   }
 }

@@ -4,6 +4,7 @@
   align-items: center;
   height: calc(100dvh);
   box-sizing: border-box;
+  z-index: 3;
 }
 
 aside {

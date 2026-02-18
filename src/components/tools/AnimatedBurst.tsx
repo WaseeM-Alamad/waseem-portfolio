@@ -8,7 +8,7 @@ export default function AnimatedBurst({
   delay = 0,
 }: {
   size?: number;
-  delay: number;
+  delay?: number;
 }) {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const locale = useLocale();
@@ -42,8 +42,8 @@ export default function AnimatedBurst({
     <div
       style={{
         position: "absolute",
-        top: -60,
-        insetInlineEnd: -70,
+        top: -90,
+        insetInlineEnd: -100,
         transform: locale === "ar" ? "scaleX(-1)" : "none",
       }}
     >
@@ -56,15 +56,15 @@ export default function AnimatedBurst({
       >
         <path
           d="M168.49 97.3975L75.7217 147.842L68.7227 134.009L148.978 59.6221L168.49 97.3975Z"
-          fill="#ff705d"
+          fill="#FF8C20"
         />
         <path
           d="M127.905 20.9443L56.6367 119.243L40.418 110.078L81.4531 4.75586L127.905 20.9443Z"
-          fill="#ff705d"
+          fill="#FF8C20"
         />
         <path
           d="M22.3496 111.633L0 109.415L9.08203 0H46.457L22.3496 111.633Z"
-          fill="#ff705d"
+          fill="#FF8C20"
         />
       </svg>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
 import About from "./sections/About";
@@ -9,32 +9,123 @@ import Contact from "./sections/Contact";
 import Notopia from "./projects/Notopia";
 import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [currentSection, setCurrentSection] = useState<string>("home");
   const mainRef = useRef<HTMLElement | null>(null);
-  
-
-  useEffect(() => {
-    requestAnimationFrame(() => setIsMounted(true));
-  }, []);
+  const shadowRef = useRef<HTMLDivElement | null>(null);
 
   useDetectSection({ setCurrentSection });
 
-  if (!isMounted) return;
+  useLayoutEffect(() => {
+    if (!mainRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const panels = gsap.utils.toArray<HTMLElement>(".panel");
+
+      // all panels except the last one get the pin + scale-out treatment
+      panels.slice(0, -1).forEach((panel) => {
+        const inner = panel.querySelector<HTMLElement>(".panel-inner");
+        if (!inner) return;
+
+        const panelHeight = inner.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const difference = panelHeight - windowHeight;
+
+        const fakeScrollRatio =
+          difference > 0 ? difference / (difference + windowHeight) : 0;
+
+        if (fakeScrollRatio) {
+          panel.style.marginBottom = panelHeight * fakeScrollRatio + "px";
+        }
+
+        if (shadowRef.current) {
+          gsap.fromTo(
+            shadowRef.current,
+            { opacity: 0 },
+            {
+              opacity: 0.3, // adjust how dark you want it
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".panel-home",
+                start: "top top",
+                end: "150% top",
+                scrub: true,
+              },
+            },
+          );
+        }
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            start: "bottom bottom",
+            end: () =>
+              fakeScrollRatio ? `+=${inner.offsetHeight}` : "bottom top",
+            pinSpacing: false,
+            pin: true,
+            scrub: true,
+          },
+        });
+
+        if (fakeScrollRatio) {
+          tl.to(inner, {
+            yPercent: -100,
+            y: window.innerHeight,
+            duration: 1 / (1 - fakeScrollRatio) - 1,
+            ease: "none",
+          });
+        }
+
+        tl.fromTo(
+          panel,
+          { scale: 1, opacity: 1 },
+          { scale: 0.95, opacity: 0.5, duration: 0.9 },
+        ).to(panel, { opacity: 0, duration: 0.1 });
+      });
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, [mainRef]);
 
   return (
     <>
       <Sidebar currentSection={currentSection} />
       <main ref={mainRef}>
-        <Home />
-        <About />
-        <Skills />
-        <Contact />
-        <Notopia />
-        <Caterfy />
-        {/* <AnimatedPath sectionRef={mainRef} /> */}
+        <div
+          ref={shadowRef}
+          style={{
+            top: "0",
+            opacity: 0,
+            pointerEvents: "none",
+            zIndex: "1",
+            position: "fixed",
+            height: "100%",
+            width: "100%",
+            background: "rgba(0,0,0,1)",
+          }}
+        />
+        {/* Panel 1 — Home */}
+        <div className="panel panel-home">
+          <div className="panel-inner">
+            <Home />
+          </div>
+        </div>
+
+        {/* Panel 2 — Everything else (last panel, never gets pinned/scaled) */}
+        <div className="panel panel-content">
+          <div className="panel-inner">
+            <About />
+            <Skills />
+            <Contact />
+            <Notopia />
+            <Caterfy />
+          </div>
+        </div>
       </main>
     </>
   );

@@ -1,32 +1,17 @@
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const Caterfy = () => {
-  const ref = useRef<HTMLElement | null>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 85%", "start 30%"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [500, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [3, 0]);
-
-  const smoothY = useSpring(y, { stiffness: 120, damping: 25 });
-  const smoothOpacity = useSpring(opacity, { stiffness: 120, damping: 25 });
-  const smoothScale = useSpring(scale, { stiffness: 120, damping: 25 });
-
   return (
     <div id="caterfy">
       <motion.section
-        ref={ref}
-        style={{
-          y: smoothY,
-          opacity: smoothOpacity,
-          scale: smoothScale,
-          rotate: rotate,
+        initial={{ opacity: 0, y: 200, scale: 0.9, rotate: 1 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{
+          type: "spring",
+          stiffness: 80,
+          damping: 20,
+          mass: 2,
         }}
       >
         <h1 style={{ color: "var(--color-primary)" }}>Caterfy</h1>

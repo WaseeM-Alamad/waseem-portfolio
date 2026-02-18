@@ -11,7 +11,7 @@
 :root {
   --sidebar-width: 10rem;
 
-  --color-primary: #ff5b5b;
+  --color-primary: #ff705d;
   --color-primary-hover: #d5def8;
 
   --color-bg: #fbf1f1;
@@ -41,7 +41,6 @@
   color: #101010;
 }
 
-/* Firefox */
 ::-moz-selection {
   background: var(--selection);
   color: #fff;
@@ -49,17 +48,17 @@
 
 [data-section="default"] {
   --color-bg: #f5f1e4;
-  --color-primary: #2dee6d;
+  --color-primary: #2093ff;
 }
 
 [data-theme="dark"][data-section="default"] {
-  --color-bg: #004947; /* very dark teal / almost black */
+  --color-bg: #004947;
   --color-primary: #13aca7;
 }
 
 [data-section="notopia"] {
   --color-bg: #f1f6fb;
-  --color-primary: #5bb6ff;
+  --color-primary: #2093ff;
 }
 
 [data-theme="dark"][data-section="notopia"] {
@@ -73,7 +72,7 @@
 }
 
 [data-theme="dark"][data-section="caterfy"] {
-  --color-bg: #f6f2fb; /* deep purple / almost black */
+  --color-bg: #f6f2fb;
   --color-primary: #a874ff;
 }
 
@@ -96,7 +95,8 @@ button {
 }
 
 main {
-  padding-inline-start: var(--sidebar-width);
+  background: var(--color-primary);
+  overflow: hidden;
   overflow-y: hidden;
 }
 
@@ -119,9 +119,7 @@ section {
   font-size: 3rem;
   font-weight: 500;
   padding: 1rem 5rem;
-  padding-bottom: 3rem;
   box-sizing: border-box;
-  /* will-change: transform; */
   transition: color 0.5s ease;
 }
 
@@ -134,6 +132,76 @@ section > * {
 }
 
 .home {
-  padding: 3rem 6rem;
-  padding-top: 5rem;
+  position: relative;
+  display: flex;
+  pointer-events: all;
+  height: 100%;
+  padding-bottom: 3rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home::selection {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+.home-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.home-btns path {
+  stroke: #ff705d;
+}
+
+.home-btns > * {
+  flex-shrink: 0;
+}
+
+.panel {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  /* overflow: hidden; */
+  box-sizing: border-box;
+}
+
+.panel-inner {
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.panel-home {
+  padding-inline-start: var(--sidebar-width) !important;
+  margin-bottom: 7rem;
+  height: 100vh;
+}
+
+.panel-home .panel-inner {
+  height: 100vh;
+}
+
+.panel-content {
+  min-height: 100vh;
+  z-index: 2;
+  background: var(--color-bg);
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+  padding-top: 6rem;
+  padding-inline-start: var(--sidebar-width);
+  transition:
+    color 0.5s ease,
+    background-color 0.5s ease;
+}
+
+.panel-content .panel-inner {
+  height: auto;
+  overflow: visible;
 }
