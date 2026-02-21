@@ -9,7 +9,7 @@
 }
 
 :root {
-  --sidebar-width: 0rem;
+  --sidebar-width: 10rem;
   --navbar-height: 4.2rem;
 
   --color-primary: #ff705d;

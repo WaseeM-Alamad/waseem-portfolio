@@ -68,7 +68,6 @@ export default async function RootLayout({
     >
       <body suppressHydrationWarning className={hilmar.variable}>
         <NextIntlClientProvider>
-          {/* <Navbar /> */}
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>

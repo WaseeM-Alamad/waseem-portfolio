@@ -11,7 +11,6 @@ import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Navbar from "./navbar/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,8 +94,7 @@ const Main = () => {
 
   return (
     <div>
-      {/* <Sidebar currentSection={currentSection} /> */}
-      <Navbar currentSection={currentSection} />
+      <Sidebar currentSection={currentSection} />
       <main ref={mainRef}>
         <div
           ref={shadowRef}
