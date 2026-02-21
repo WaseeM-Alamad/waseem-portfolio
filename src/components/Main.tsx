@@ -11,6 +11,7 @@ import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Navbar from "./navbar/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,7 +49,7 @@ const Main = () => {
             shadowRef.current,
             { opacity: 0 },
             {
-              opacity: 0.3, // adjust how dark you want it
+              opacity: 0.3,
               ease: "none",
               scrollTrigger: {
                 trigger: ".panel-home",
@@ -65,7 +66,7 @@ const Main = () => {
             trigger: panel,
             start: "bottom bottom",
             end: () =>
-              fakeScrollRatio ? `+=${inner.offsetHeight}` : "bottom top",
+              fakeScrollRatio ? `+=${inner.offsetHeight}` : "180% top",
             pinSpacing: false,
             pin: true,
             scrub: true,
@@ -84,8 +85,8 @@ const Main = () => {
         tl.fromTo(
           panel,
           { scale: 1, opacity: 1 },
-          { scale: 0.95, opacity: 0.5, duration: 0.9 },
-        ).to(panel, { opacity: 0, duration: 0.1 });
+          { scale: 0.8, opacity: 0.5, duration: 0.9 },
+        ).to(panel, { opacity: 0.3, duration: 0.1 });
       });
     }, mainRef);
 
@@ -93,8 +94,9 @@ const Main = () => {
   }, [mainRef]);
 
   return (
-    <>
-      <Sidebar currentSection={currentSection} />
+    <div>
+      {/* <Sidebar currentSection={currentSection} /> */}
+      <Navbar currentSection={currentSection} />
       <main ref={mainRef}>
         <div
           ref={shadowRef}
@@ -127,7 +129,7 @@ const Main = () => {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
 

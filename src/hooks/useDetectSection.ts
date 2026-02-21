@@ -19,33 +19,23 @@ export default function useDetectSection({
       document.documentElement.setAttribute("data-section", id);
     };
     const handleScroll = () => {
-      let maxVisibility = 0;
-      let mostVisibleSection = "";
+      const viewportMiddle = window.innerHeight / 1.3;
+      let currentSection = "";
 
       sectionsArray.forEach(({ id }) => {
         const element = document.getElementById(id);
         if (!element) return;
 
         const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight * 1.4;
 
-        const visibleTop = Math.max(rect.top, 0);
-        const visibleBottom = Math.min(rect.bottom, windowHeight);
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const visibility = visibleHeight / rect.height;
-
-        if (visibility > maxVisibility) {
-          maxVisibility = visibility;
-          mostVisibleSection = id;
+        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+          currentSection = id;
         }
       });
 
-      if (
-        mostVisibleSection &&
-        mostVisibleSection !== activeSectionRef.current
-      ) {
-        activeSectionRef.current = mostVisibleSection;
-        onSectionView(mostVisibleSection);
+      if (currentSection && currentSection !== activeSectionRef.current) {
+        activeSectionRef.current = currentSection;
+        onSectionView(currentSection);
       }
     };
 

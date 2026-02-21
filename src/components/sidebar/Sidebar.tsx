@@ -66,7 +66,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
                     className={currentSection === id ? "selected" : ""}
                   >
                     <button onClick={() => scrollIntoView(id)}>
-                      <Icon size={18} strokeWidth={1.5} />
+                      <Icon size={18} strokeWidth={1} />
                       <span>{t(id)}</span>
                     </button>
                   </div>

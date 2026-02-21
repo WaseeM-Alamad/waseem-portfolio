@@ -16,6 +16,8 @@
     "crafting": "Crafting",
     "interactive": "Interactive",
     "webExperiences": "Web Experiences",
-    "homeDesc": "Full-Stack Engineer building scalable, performance-driven web\n & mobile experiences with clean architecture and refined motion."
+    "homeDesc": "Full-Stack Engineer building scalable, performance-driven web\n & mobile experiences with clean architecture and refined motion.",
+    "contactMe": "Contact Me",
+    "myWork": "My Work"
   }
 }

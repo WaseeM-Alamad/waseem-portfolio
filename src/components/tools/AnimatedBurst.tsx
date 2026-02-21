@@ -52,19 +52,19 @@ export default function AnimatedBurst({
         width={size}
         height={(size * 148) / 169}
         viewBox="0 0 169 148"
-        style={{ display: "block" }}
+        className="animated-burst"
       >
         <path
           d="M168.49 97.3975L75.7217 147.842L68.7227 134.009L148.978 59.6221L168.49 97.3975Z"
-          fill="#FF8C20"
+          fill="var(--home-comp-color)"
         />
         <path
           d="M127.905 20.9443L56.6367 119.243L40.418 110.078L81.4531 4.75586L127.905 20.9443Z"
-          fill="#FF8C20"
+          fill="var(--home-comp-color)"
         />
         <path
           d="M22.3496 111.633L0 109.415L9.08203 0H46.457L22.3496 111.633Z"
-          fill="#FF8C20"
+          fill="var(--home-comp-color)"
         />
       </svg>
     </div>

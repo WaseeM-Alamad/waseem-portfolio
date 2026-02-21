@@ -16,12 +16,11 @@ export default function LocaleSwitcher() {
 
   return (
     <div
-      className="top-toggle border-radius-btn"
       onClick={() => {
         switchLocale();
       }}
     >
-      <Globe size={15} />
+      {/* <Globe size={15} /> */}
       <div>{locale === "en"? "AR": "EN"}</div>
     </div>
   );

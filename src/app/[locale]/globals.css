@@ -9,7 +9,8 @@
 }
 
 :root {
-  --sidebar-width: 10rem;
+  --sidebar-width: 0rem;
+  --navbar-height: 4.2rem;
 
   --color-primary: #ff705d;
   --color-primary-hover: #d5def8;
@@ -21,6 +22,8 @@
   --color-text-secondary: #dadada;
 
   --color-border: #868686;
+
+  --home-comp-color: #ff8c20;
 }
 
 [data-theme="dark"] {
@@ -34,6 +37,8 @@
   --color-text-secondary: #bdbdbd;
 
   --color-border: #4e4e4e;
+
+  --home-comp-color: #cc6c12;
 }
 
 ::selection {
@@ -46,14 +51,18 @@
   color: #fff;
 }
 
+[data-theme="dark"] *::selection {
+  color: var(--color-text-primary) !important;
+}
+
 [data-section="default"] {
   --color-bg: #f5f1e4;
   --color-primary: #2093ff;
 }
 
 [data-theme="dark"][data-section="default"] {
-  --color-bg: #004947;
-  --color-primary: #13aca7;
+  --color-bg: #111822;
+  --color-primary: #034183;
 }
 
 [data-section="notopia"] {
@@ -98,6 +107,7 @@ main {
   background: var(--color-primary);
   overflow: hidden;
   overflow-y: hidden;
+  transition: all 0.5s ease;
 }
 
 .svg-path {
@@ -136,6 +146,7 @@ section > * {
   display: flex;
   pointer-events: all;
   height: 100%;
+  padding-top: 8rem;
   padding-bottom: 3rem;
   box-sizing: border-box;
   flex-direction: column;
@@ -143,7 +154,7 @@ section > * {
   align-items: center;
 }
 
-.home::selection {
+.home *::selection {
   background-color: var(--color-bg);
   color: var(--color-primary);
 }
@@ -192,8 +203,8 @@ section > * {
   min-height: 100vh;
   z-index: 2;
   background: var(--color-bg);
-  border-top-left-radius: 5rem;
-  border-top-right-radius: 5rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
   padding-top: 6rem;
   padding-inline-start: var(--sidebar-width);
   transition:
@@ -204,4 +215,8 @@ section > * {
 .panel-content .panel-inner {
   height: auto;
   overflow: visible;
+}
+
+.animated-burst > path {
+  transition: fill 0.5s ease;
 }
