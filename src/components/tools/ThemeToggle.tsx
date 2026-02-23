@@ -30,7 +30,7 @@ const ThemeToggle = () => {
   }, [setTheme]);
 
   return (
-    <div style={{display: 'flex', height: "100%", width: "100%"}} onClick={toggleDarkMode}>
+    <div className="top-toggle border-radius-btn" onClick={toggleDarkMode}>
       {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
     </div>
   );

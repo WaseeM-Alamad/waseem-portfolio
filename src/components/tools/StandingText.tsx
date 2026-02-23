@@ -4,9 +4,13 @@ import { gsap } from "gsap";
 export const StandingText = ({
   children,
   once = false,
+  duration = 0.6,
+  delay = 0
 }: {
   children: ReactNode;
   once?: boolean | false;
+  duration?: number;
+  delay?: number;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const hasAnimatedRef = useRef<boolean>(false);
@@ -33,7 +37,8 @@ export const StandingText = ({
           gsap.to(words, {
             rotationX: 0,
             opacity: 1,
-            duration: 0.6,
+            duration: duration,
+            delay: delay,
             ease: "power2.out",
             stagger: 0.15,
           });

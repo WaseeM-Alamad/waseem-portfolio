@@ -41,6 +41,7 @@ const Home = () => {
               textAlign: "center",
               marginBottom: "1.5rem",
               width: "fit-content",
+              whiteSpace: "nowrap"
             }}
           >
             <span style={{ position: "relative" }}>

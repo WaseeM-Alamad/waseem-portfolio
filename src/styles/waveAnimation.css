@@ -1,6 +1,7 @@
 .wave-text {
   width: fit-content;
   white-space: nowrap;
+  line-height: 0.9;
 }
 
 .wave-wrapper {
