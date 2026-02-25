@@ -11,6 +11,8 @@ import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Plant from "./icons/Plant";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +21,7 @@ const Main = () => {
   const mainRef = useRef<HTMLElement | null>(null);
   const shadowRef = useRef<HTMLDivElement | null>(null);
 
-  useDetectSection({ setCurrentSection });
+  // useDetectSection({ setCurrentSection });
 
   useLayoutEffect(() => {
     if (!mainRef.current) return;
@@ -95,6 +97,7 @@ const Main = () => {
   return (
     <div>
       <Sidebar currentSection={currentSection} />
+
       <main ref={mainRef}>
         <div
           ref={shadowRef}
@@ -117,7 +120,29 @@ const Main = () => {
         </div>
 
         {/* Panel 2 — Everything else (last panel, never gets pinned/scaled) */}
-        <div className="panel panel-content">
+        <div className="panel panel-content" style={{ marginTop: "-12vh" }}>
+          <Plant />
+          <motion.img
+            initial={{ opacity: 0, transform: "translate(0%, -100%)" }}
+            animate={{ opacity: 1, transform: "translate(-10%, -100%)" }}
+            transition={{
+              delay: 0.8,
+              type: "spring",
+              stiffness: 300,
+              damping: 40,
+              mass: 1,
+            }}
+            style={{
+              position: "absolute",
+              top: 0,
+              insetInlineEnd: "0",
+              // marginInlineEnd: "17rem",
+              zIndex: 10,
+              pointerEvents: "none",
+            }}
+            width={500}
+            src="/couch.png"
+          />
           <div className="panel-inner">
             <About />
             <Skills />

@@ -5,13 +5,13 @@ import WaveAnimation from "../tools/WaveAnimation";
 import { useRef } from "react";
 
 const About = () => {
-  const t = useTranslations("sidebar");
+  const t = useTranslations("about");
 
   const points = [
-    "I’m a Full-Stack Developer based in Jordan. I build scalable and mobile applications with a strong focus on performance, structure, and clean architecture.",
-    "I’ve engineered complex systems from scratch — building custom masonry layouts, drag-and-drop interactions, optimized ordering logic, and tailored virtualization strategies designed to handle large datasets efficiently.",
-    "I care about how applications behave under real usage — how data flows, how components scale, and how interactions feel. My goal is to build products that are fast, predictable, and built to last.",
-    "On the backend, I design structured APIs, manage databases, and implement secure data flows with a focus on scalability and clarity. I work with Node.js, MongoDB, and Supabase to build reliable systems that handle authentication, storage, and real-time updates efficiently.",
+    t("point1"),
+    t("point2"),
+    t("point3"),
+    t("point4"),
   ];
 
   const ref = useRef<HTMLElement | null>(null);
@@ -32,14 +32,14 @@ const About = () => {
         viewport={{ once: true }}
         transition={{
           type: "spring",
-          stiffness: 80,
+          stiffness: 120,
           damping: 20,
           mass: 2,
         }}
         style={{ marginBottom: "1.5rem" }}
       >
         {" "}
-        Waseem Alamad{" "}
+        {t("fullName")}
       </motion.h2>
       <div
         style={{
@@ -54,10 +54,10 @@ const About = () => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{
                 type: "spring",
-                stiffness: 80,
+                stiffness: 120,
                 damping: 20,
                 mass: 2,
               }}

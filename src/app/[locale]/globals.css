@@ -23,7 +23,7 @@
 
   --color-border: #868686;
 
-  --home-comp-color: #2ba0ff;
+  --home-comp-color: #F58020;
 }
 
 [data-theme="dark"] {
@@ -57,7 +57,7 @@
 
 [data-section="default"] {
   --color-bg: #f3f3f3;
-  --color-primary: #f9d314;
+  --color-primary: #2095f5;
 }
 
 [data-theme="dark"][data-section="default"] {
@@ -129,6 +129,7 @@ section {
   font-size: 3rem;
   font-weight: 500;
   padding: 1rem 5rem;
+  padding-bottom: 5rem;
   box-sizing: border-box;
   transition: color 0.5s ease;
 }
@@ -223,6 +224,7 @@ section > * {
 
 .about-text-wrapper {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 3rem;
   font-size: 1.88rem;
@@ -232,8 +234,4 @@ section > * {
   display: flex;
   /* align-items: center; */
   gap: 1.5rem;
-}
-
-#about {
-  padding-bottom: 15rem;
 }

@@ -1,4 +1,4 @@
-import { Contact2, Home, MessageCircle, UserRound, Wrench } from "lucide-react";
+import { Contact2, Home, Layers, MessageCircle, ToolCase, UserRound, Wrench } from "lucide-react";
 
 const sections = [
   {
@@ -11,7 +11,7 @@ const sections = [
   },
   {
     id: "skills",
-    Icon: Wrench,
+    Icon: ToolCase,
   },
   // {
   //

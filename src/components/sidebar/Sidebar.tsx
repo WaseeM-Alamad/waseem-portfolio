@@ -43,7 +43,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
           type: "spring",
           stiffness: 400,
           damping: 50,
-          mass: .3,
+          mass: 0.3,
         }}
         className="sidebar-wrapper"
       >
@@ -53,7 +53,11 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
-          <div id="general-label" className="side-label" style={{ marginTop: "2rem" }}>
+          <div
+            id="general-label"
+            className="side-label"
+            style={{ marginTop: "2rem" }}
+          >
             {t("general")}
           </div>
           <div className="side-sections-wrapper">
@@ -74,7 +78,9 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
               })}
             </div>
             <div className="side-sections-container">
-              <div id="projects-label" className="side-label">{t("projects")}</div>
+              <div id="projects-label" className="side-label">
+                {t("projects")}
+              </div>
               {projects.map(({ id, Icon }) => {
                 return (
                   <div

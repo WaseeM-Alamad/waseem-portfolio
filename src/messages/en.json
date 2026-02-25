@@ -19,5 +19,12 @@
     "homeDesc": "Full-Stack Engineer building scalable, performance-driven web\n & mobile experiences with clean architecture and refined motion.",
     "contactMe": "Contact Me",
     "myWork": "My Work"
+  },
+  "about": {
+    "fullName": "Waseem Alamad",
+    "point1": "I’m a Jordan-based Full-Stack Developer fluent in Arabic and English. I build scalable web and mobile applications with a strong focus on performance, structure, and clean architecture.",
+    "point2": "I’ve engineered complex systems from scratch — building custom masonry layouts, drag-and-drop interactions, optimized ordering logic, and tailored virtualization strategies designed to handle large datasets efficiently.",
+    "point3": "I care about how applications behave under real usage — how data flows, how components scale, and how interactions feel. My goal is to build products that are fast, predictable, and built to last.",
+    "point4": "On the backend, I design structured APIs, manage databases, and implement secure data flows with a focus on scalability and clarity. I work with Node.js, MongoDB, and Supabase to build reliable systems that handle authentication, storage, and real-time updates efficiently."
   }
 }

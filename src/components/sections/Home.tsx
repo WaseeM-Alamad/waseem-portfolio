@@ -4,6 +4,7 @@ import AnimatedBurst from "../tools/AnimatedBurst";
 import { useTranslations } from "next-intl";
 import OutlinedButton from "../buttons/OutlinedButton";
 import { useSmoothScroll } from "@/contexts/SmoothScrollContext";
+import Painting from "../icons/Painting";
 
 const Home = () => {
   const t = useTranslations("home");
@@ -13,6 +14,7 @@ const Home = () => {
 
   return (
     <motion.section ref={ref} className="home" id="home">
+      <Painting />
       <motion.div
         style={{
           position: "relative",
@@ -20,6 +22,8 @@ const Home = () => {
           // scale,
         }}
       >
+        
+
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -36,7 +40,7 @@ const Home = () => {
         >
           <div
             style={{
-              fontSize: "7rem",
+              fontSize: "clamp(1.5rem, 10vw, 7rem)",
               fontWeight: "600",
               textAlign: "center",
               marginBottom: "1.5rem",
@@ -64,7 +68,7 @@ const Home = () => {
             style={{
               whiteSpace: "pre-line",
               textAlign: "center",
-              fontSize: "1.6rem",
+              fontSize: "clamp(.5rem, 3vw, 1.6rem)",
               fontWeight: "600",
             }}
           >
