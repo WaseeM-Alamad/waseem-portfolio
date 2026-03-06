@@ -56,15 +56,15 @@ export default function AnimatedBurst({
       >
         <path
           d="M168.49 97.3975L75.7217 147.842L68.7227 134.009L148.978 59.6221L168.49 97.3975Z"
-          fill="var(--home-comp-color)"
+          fill="var(--secondary-color)"
         />
         <path
           d="M127.905 20.9443L56.6367 119.243L40.418 110.078L81.4531 4.75586L127.905 20.9443Z"
-          fill="var(--home-comp-color)"
+          fill="var(--secondary-color)"
         />
         <path
           d="M22.3496 111.633L0 109.415L9.08203 0H46.457L22.3496 111.633Z"
-          fill="var(--home-comp-color)"
+          fill="var(--secondary-color)"
         />
       </svg>
     </div>

@@ -21,9 +21,9 @@
   --color-text-primary: #2c2e2a;
   --color-text-secondary: #dadada;
 
-  --color-border: #868686;
+  --color-border: #e0e0e0;
 
-  --home-comp-color: #2ba0ff;
+  --secondary-color: #2ba0ff;
 }
 
 [data-theme="dark"] {
@@ -38,7 +38,7 @@
 
   --color-border: #4e4e4e;
 
-  --home-comp-color: #cc6c12;
+  --secondary-color: #cc6c12;
 }
 
 ::selection {
@@ -235,5 +235,46 @@ section > * {
 }
 
 #about {
-  padding-bottom: 15rem;
+  padding-bottom: 10rem;
+}
+
+#skills {
+  padding: 0 20%;
+  overflow: hidden;
+}
+
+.colored-card {
+  height: 90vh;
+  padding-top: 15px;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+}
+
+main > *:nth-child(2) {
+  margin: 0 !important;
+}
+
+.home-links-wrapper {
+  display: flex;
+  gap: 0.7rem;
+  position: absolute;
+  transform: translateY(-100%);
+  top: 0;
+  inset-inline-end: 0.5rem;
+  width: fit-content;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
+
+.home-link {
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.home-link:hover {
+  transform: scale(1.07);
 }

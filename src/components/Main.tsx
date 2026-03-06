@@ -1,5 +1,4 @@
 "use client";
-
 import { useLayoutEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
@@ -11,6 +10,9 @@ import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LinkedIn from "./icons/LinkedIn";
+import Github from "./icons/Github";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,6 +120,32 @@ const Main = () => {
 
         {/* Panel 2 — Everything else (last panel, never gets pinned/scaled) */}
         <div className="panel panel-content">
+          <motion.div
+            initial={{ transform: "translate(6rem ,-100%)", opacity: 0 }}
+            animate={{ transform: "translate(0 ,-100%)", opacity: 1 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.35, 0, 0.15, 1],
+              delay: 0.2,
+              opacity: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+            }}
+            className="home-links-wrapper"
+          >
+            <a
+              className="home-link"
+              href="https://github.com/WaseeM-Alamad"
+              target="_blank"
+            >
+              <Github />
+            </a>
+            <a
+              className="home-link"
+              href="https://www.linkedin.com/in/waseemalamad/"
+              target="_blank"
+            >
+              <LinkedIn />
+            </a>
+          </motion.div>
           <div className="panel-inner">
             <About />
             <Skills />

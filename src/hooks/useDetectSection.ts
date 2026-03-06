@@ -12,11 +12,11 @@ export default function useDetectSection({
     const sectionsArray = [...sections, ...projects];
     const onSectionView = (id: string) => {
       setCurrentSection(id);
-      if (!["notopia", "caterfy", "contact"].includes(id)) {
-        document.documentElement.setAttribute("data-section", "default");
-        return;
-      }
-      document.documentElement.setAttribute("data-section", id);
+      // if (!["notopia", "caterfy", "contact"].includes(id)) {
+      //   document.documentElement.setAttribute("data-section", "default");
+      //   return;
+      // }
+      // document.documentElement.setAttribute("data-section", id);
     };
     const handleScroll = () => {
       const viewportMiddle = window.innerHeight / 1.3;
