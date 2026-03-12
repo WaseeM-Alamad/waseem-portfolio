@@ -126,8 +126,8 @@ const Main = () => {
             transition={{
               duration: 0.7,
               ease: [0.35, 0, 0.15, 1],
-              delay: 0.2,
-              opacity: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+
+              opacity: { duration: 0.6, ease: "easeOut" },
             }}
             className="home-links-wrapper"
           >
@@ -150,8 +150,8 @@ const Main = () => {
             <About />
             <Skills />
             <Contact />
-            <Notopia />
-            <Caterfy />
+            {/* <Notopia /> */}
+            {/* <Caterfy /> */}
           </div>
         </div>
       </main>

@@ -12,7 +12,7 @@ const cardsData = [
     id: 1,
     title: "Frontend Engineering",
     image: "/frontend.svg",
-    color: "#2ba0ff",
+    color: "#ff705c",
     icon: LayoutGrid,
     list: [
       "React, Next.js",
@@ -56,7 +56,7 @@ const cardsData = [
     id: 4,
     title: "Engineering Principles",
     image: "/engineering.svg",
-    color: "#ff705c",
+    color: "#f5e211",
     icon: Shapes,
     list: [
       "Clean architecture",
@@ -101,12 +101,12 @@ export default function StackedCards() {
 
         if (index < cards.length - 1) {
           gsap.to(content, {
-            opacity: 0.3,
+            opacity: 0,
             ease: "none",
             scrollTrigger: {
               trigger: cards[index + 1],
-              start: "top 60%",
-              end: `top-=${(index + 2) * GAP} top`,
+              start: "top 54%",
+              end: `top-=${(index + 2) * GAP * 1.05} top`,
               scrub: true,
             },
           });
