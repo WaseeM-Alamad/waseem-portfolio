@@ -1,0 +1,86 @@
+.form-btn {
+  position: relative;
+  border: none;
+  background-color: white;
+  width: fit-content;
+  cursor: pointer;
+  padding: 1.3rem 3.1rem;
+  font-size: 1.3rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33);
+}
+
+.form-btn-text {
+  position: absolute;
+  inset-inline-start: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  transition: all 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33);
+}
+
+.form-btn:hover .form-btn-text {
+  transform: translateY(-50%) translateX(3rem);
+}
+
+html[lang="ar"] .form-btn:hover .form-btn-text {
+  transform: translateY(-50%) translateX(-3rem);
+}
+
+.btn-circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 50%;
+  inset-inline-end: 1rem;
+  transform: translateY(-50%);
+  background-color: var(--color-primary);
+  will-change: transform;
+  transition:
+    transform 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33),
+    opacity 0.2s ease-in-out;
+}
+
+.btn-circle-hover {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  transform-origin: center;
+  background-color: var(--color-primary);
+  inset-inline-start: 1rem;
+  will-change: transform;
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33),
+    opacity 0.2s ease-in-out;
+}
+
+html[lang="ar"] .arrow-icon {
+  transform: scaleX(-1);
+}
+
+.form-btn:hover {
+  transform: scale(1.05);
+}
+
+.form-btn:hover .btn-circle {
+  transform: translateY(-50%) scale(0);
+  opacity: 0;
+}
+
+.form-btn:hover .btn-circle-hover {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+}

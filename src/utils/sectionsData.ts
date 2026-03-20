@@ -1,4 +1,4 @@
-import { Contact2, Home, MessageCircle, UserRound, Wrench } from "lucide-react";
+import { Contact2, Home, MessageCircle, Phone, UserRound, Wrench } from "lucide-react";
 
 const sections = [
   {
@@ -18,7 +18,7 @@ const sections = [
   // },
   {
     id: "contact",
-    Icon: MessageCircle,
+    Icon: Phone,
   },
 ];
 
