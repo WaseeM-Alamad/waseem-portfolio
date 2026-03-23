@@ -1,10 +1,10 @@
 .form-btn {
   position: relative;
   border: none;
-  background-color: white;
+  background-color: #ff705c;
   width: fit-content;
   cursor: pointer;
-  padding: 1.3rem 3.1rem;
+  padding: 1.2rem 2.8rem;
   font-size: 1.3rem;
   border-radius: 0.8rem;
   overflow: hidden;
@@ -14,10 +14,11 @@
 
 .form-btn-text {
   position: absolute;
-  inset-inline-start: 1.4rem;
+  inset-inline-start: 1.3rem;
   top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
+  font-size: 1.1rem;
   transition: all 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33);
 }
 
@@ -38,9 +39,9 @@ html[lang="ar"] .form-btn:hover .form-btn-text {
   width: 2.5rem;
   height: 2.5rem;
   top: 50%;
-  inset-inline-end: 1rem;
+  inset-inline-end: 0.75rem;
   transform: translateY(-50%);
-  background-color: var(--color-primary);
+  background-color: white;
   will-change: transform;
   transition:
     transform 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33),
@@ -58,8 +59,8 @@ html[lang="ar"] .form-btn:hover .form-btn-text {
   top: 50%;
   transform: translateY(-50%) scale(0);
   transform-origin: center;
-  background-color: var(--color-primary);
-  inset-inline-start: 1rem;
+  background-color: white;
+  inset-inline-start: 0.75rem;
   will-change: transform;
   opacity: 0;
   transition:

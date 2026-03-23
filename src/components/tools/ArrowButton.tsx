@@ -13,7 +13,7 @@ const ArrowButton = ({
   textColor?: string;
 }) => {
   const btnColor = { backgroundColor: bgColor };
-  const circleColor = { color: secondaryColor };
+  const circleColor = { backgroundColor: secondaryColor };
   const titleColor = { color: textColor };
 
   return (
