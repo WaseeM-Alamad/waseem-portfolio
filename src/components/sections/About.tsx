@@ -4,14 +4,9 @@ import Image from "next/image";
 import { useRef } from "react";
 
 const About = () => {
-  const t = useTranslations("sidebar");
+  const t = useTranslations("about");
 
-  const points = [
-    "I’m a Full-Stack Developer based in Jordan. I build scalable and mobile applications with a strong focus on performance, structure, and clean architecture.",
-    "I’ve engineered complex systems from scratch — building custom masonry layouts, drag-and-drop interactions, optimized ordering logic, and tailored virtualization strategies designed to handle large datasets efficiently.",
-    "I care about how applications behave under real usage — how data flows, how components scale, and how interactions feel. My goal is to build products that are fast, predictable, and built to last.",
-    "On the backend, I design structured APIs, manage databases, and implement secure data flows with a focus on scalability and clarity. I work with Node.js, MongoDB, and Supabase to build reliable systems that handle authentication, storage, and real-time updates efficiently.",
-  ];
+  const points = [t("point1"), t("point2"), t("point3"), t("point4")];
 
   const ref = useRef<HTMLElement | null>(null);
 
@@ -20,8 +15,8 @@ const About = () => {
     offset: ["start end", "end end"],
   });
 
-  const y = useTransform(scrollYProgress, [0, .8], [250, 0]);
-  const rotate = useTransform(scrollYProgress, [0, .8], [10, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.8], [250, 0]);
+  const rotate = useTransform(scrollYProgress, [0, 0.8], [10, 0]);
 
   return (
     <section ref={ref} id="about">
@@ -37,8 +32,7 @@ const About = () => {
         }}
         style={{ marginBottom: "1.5rem" }}
       >
-        {" "}
-        Waseem Alamad{" "}
+        {t("waseemAlamad")}
       </motion.h2>
       <div
         style={{
@@ -85,7 +79,7 @@ const About = () => {
           ))}
         </div>
 
-        <motion.div style={{ y,  rotate }}>
+        <motion.div style={{ y, rotate }}>
           <Image
             src="https://picsum.photos/500/703"
             alt=""

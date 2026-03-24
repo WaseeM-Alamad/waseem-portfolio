@@ -3,6 +3,7 @@ import React from "react";
 const ExclamationMark = () => {
   return (
     <svg
+      className="lang-flip"
       style={{ flexShrink: "0" }}
       width="13"
       height="40"

@@ -4,75 +4,77 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Observer } from "gsap/all";
 import { Database, LayoutGrid, Shapes, Smartphone } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
-
-const cardsData = [
-  {
-    id: 1,
-    title: "Frontend Engineering",
-    image: "/frontend.svg",
-    color: "#ff705c",
-    icon: LayoutGrid,
-    list: [
-      "React, Next.js",
-      "Custom masonry layouts",
-      "Drag-and-drop interactions",
-      "State management & rendering control",
-      "Performance optimization",
-      "Responsive UI systems",
-    ],
-  },
-  {
-    id: 2,
-    title: "Backend & Data",
-    image: "/backend.svg",
-    color: "#8ed462",
-    icon: Database,
-    list: [
-      "Node.js & REST APIs",
-      "MongoDB schema design",
-      "Supabase (Auth, Storage, Realtime)",
-      "Secure data flows",
-      "Optimized queries & indexing",
-      "Scalable backend architecture",
-    ],
-  },
-  {
-    id: 3,
-    title: "Mobile Development",
-    image: "/mobile.svg",
-    color: "#ebc1ff",
-    icon: Smartphone,
-    list: [
-      "Flutter cross-platform apps",
-      "Mobile UI & layout systems",
-      "Local state & cart management",
-      "API integration",
-      "Performance-conscious mobile builds",
-    ],
-  },
-  {
-    id: 4,
-    title: "Engineering Principles",
-    image: "/engineering.svg",
-    color: "#f5e211",
-    icon: Shapes,
-    list: [
-      "Clean architecture",
-      "Modular & scalable systems",
-      "Predictable data flow",
-      "Maintainable codebases",
-      "User-focused interaction design",
-      "Performance-first mindset",
-    ],
-  },
-];
 
 const GAP = 70;
 
 export default function StackedCards() {
+  const t = useTranslations("skills");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const cardsData = [
+    {
+      id: 1,
+      title: t("frontendEngineering"),
+      image: "/frontend.svg",
+      color: "#ff705c",
+      icon: LayoutGrid,
+      list: [
+        "React, Next.js",
+        "Custom masonry layouts",
+        "Drag-and-drop interactions",
+        "State management & rendering control",
+        "Performance optimization",
+        "Responsive UI systems",
+      ],
+    },
+    {
+      id: 2,
+      title: t("backendAndData"),
+      image: "/backend.svg",
+      color: "#8ed462",
+      icon: Database,
+      list: [
+        "Node.js & REST APIs",
+        "MongoDB schema design",
+        "Supabase (Auth, Storage, Realtime)",
+        "Secure data flows",
+        "Optimized queries & indexing",
+        "Scalable backend architecture",
+      ],
+    },
+    {
+      id: 3,
+      title: t("mobiledevelopment"),
+      image: "/mobile.svg",
+      color: "#ebc1ff",
+      icon: Smartphone,
+      list: [
+        "Flutter cross-platform apps",
+        "Mobile UI & layout systems",
+        "Local state & cart management",
+        "API integration",
+        "Performance-conscious mobile builds",
+      ],
+    },
+    {
+      id: 4,
+      title: t("engineeringprinciples"),
+      image: "/engineering.svg",
+      color: "#f5e211",
+      icon: Shapes,
+      list: [
+        "Clean architecture",
+        "Modular & scalable systems",
+        "Predictable data flow",
+        "Maintainable codebases",
+        "User-focused interaction design",
+        "Performance-first mindset",
+      ],
+    },
+  ];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -189,6 +191,9 @@ export default function StackedCards() {
               ))}
             </div>
             <Image
+              className={
+                card.image.includes("frontend") ? undefined : "lang-flip"
+              }
               src={card.image}
               alt=""
               width={350}

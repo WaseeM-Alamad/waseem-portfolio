@@ -20,10 +20,27 @@
     "contactMe": "Contact Me",
     "myWork": "My Work"
   },
+  "about": {
+    "waseemAlamad": "Waseem Alamad",
+    "point1": "I’m a Full-Stack Developer based in Jordan. I build scalable and mobile applications with a strong focus on performance, structure, and clean architecture.",
+    "point2": "I’ve engineered complex systems from scratch — building custom masonry layouts, drag-and-drop interactions, optimized ordering logic, and tailored virtualization strategies designed to handle large datasets efficiently.",
+    "point3": "I care about how applications behave under real usage — how data flows, how components scale, and how interactions feel. My goal is to build products that are fast, predictable, and built to last.",
+    "point4": "On the backend, I design structured APIs, manage databases, and implement secure data flows with a focus on scalability and clarity. I work with Node.js, MongoDB, and Supabase to build reliable systems that handle authentication, storage, and real-time updates efficiently."
+  },
+  "skills": {
+    "frontendEngineering": "Frontend Engineering",
+    "backendAndData": "Backend & Data",
+    "mobiledevelopment": "Mobile Development",
+    "engineeringprinciples": "Engineering Principles"
+  },
   "contact": {
     "sendMessage": "Send message",
+    "sendMeAMessage": "Send me a message",
+    "subtitle": "I'm always open to new opportunities, collaborations, or interesting ideas. If you've got something in mind, let's talk.",
     "name": "Name",
     "email": "Email",
-    "message": "Message"
+    "message": "Message",
+    "letsConnect": "Let's Connect",
+    "messagePlaceholder": "Tell me about your project..."
   }
 }
