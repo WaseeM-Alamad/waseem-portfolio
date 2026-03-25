@@ -41,6 +41,7 @@
     "email": "Email",
     "message": "Message",
     "letsConnect": "Let's Connect",
+    "namePlaceholder": "e.g. John Doe",
     "messagePlaceholder": "Tell me about your project..."
   }
 }

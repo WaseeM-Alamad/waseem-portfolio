@@ -40,7 +40,8 @@
     "name": "الاسم",
     "email": "الايميل",
     "message": "الرسالة",
-    "letsConnect": "دعنا نتواصل معا",
-    "messagePlaceholder": "...أخبرني عن مشروعك"
+    "letsConnect": "دعنا نتواصل",
+    "namePlaceholder": "مثال: محمد صلاح",
+    "messagePlaceholder": "...أخبرني عن مشروعك" 
   }
 }

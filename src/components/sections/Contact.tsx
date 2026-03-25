@@ -1,13 +1,21 @@
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import ExclamationMark from "../icons/ExclamationMark";
 import ArrowButton from "../tools/ArrowButton";
 import TablePhone from "../icons/TablePhone";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import RoundButton from "../tools/RoundButton";
+import { ArrowBigDown, Instagram } from "lucide-react";
 
 const Contact = () => {
+  const locale = useLocale();
+  const isEn = locale === "en";
   const t = useTranslations("contact");
   const ref = useRef(null);
+  const phoneRef = useRef(null);
+  const leftPanelRef = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const layer1 = useAnimation();
@@ -44,13 +52,80 @@ const Contact = () => {
         duration: 0.4,
       },
     });
-  }, [isInView]);
+  }, [isInView, box, layer1, layer2]);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const box = ref.current;
+    const phone = phoneRef.current;
+    const leftPanel = leftPanelRef.current;
+
+    gsap.fromTo(
+      box,
+      {
+        y: 55,
+        scale: 0.98,
+      },
+      {
+        y: 0,
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: box,
+          start: "top 120%",
+          end: "top -1rem",
+          scrub: true,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      phone,
+      {
+        scale: 0.97,
+      },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: phone,
+          start: "top 120%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      leftPanel,
+      {
+        x: isEn ? -15 : 15,
+        scale: 0.94,
+      },
+      {
+        x: 0,
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: box,
+          start: "top 120%",
+          end: "top -1rem",
+          scrub: true,
+        },
+      },
+    );
+
+    return () => {
+      ScrollTrigger.killAll();
+    };
+  }, [isEn]);
 
   return (
     <motion.section id="contact">
       <div className="contact">
         <div
-          className="left-panel"
+          ref={leftPanelRef}
           style={{
             display: "flex",
             alignItems: "center",
@@ -65,8 +140,7 @@ const Contact = () => {
               position: "relative",
               display: "flex",
               flexDirection: "column",
-              fontSize: "7rem",
-              // gap: "1.5rem",
+              fontSize: "7.5rem",
             }}
           >
             <span style={{ paddingTop: ".5rem", whiteSpace: "nowrap" }}>
@@ -78,17 +152,22 @@ const Contact = () => {
                 position: "absolute",
                 bottom: "-.3rem",
               }}
-              width="675"
-              height="27"
-              viewBox="0 0 675 27"
+              width="756"
+              height="28"
+              viewBox="0 0 756 28"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <motion.path
-                d="M8 16.7754C228.452 23.5161 633.193 12.5395 666.104 8.00067"
+                d={
+                  isEn
+                    ? "M10 15.2777C230.452 22.0184 713.089 14.5398 746 10.001"
+                    : "M10 14.2777C230.452 21.0184 490.589 14.5398 523.5 10.001"
+                }
                 stroke="#FF705C"
-                strokeWidth="16"
+                strokeWidth="20"
                 strokeLinecap="round"
+                strokeDasharray="1 1"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true }}
@@ -111,9 +190,14 @@ const Contact = () => {
             }}
             style={{ fontSize: "2rem", textAlign: "center" }}
           >
-            <br/>
+            <br />
             {t("subtitle")}
           </motion.div>
+          <div style={{ display: "flex", gap: "2rem", marginTop: "1.5rem" }}>
+            {/* <RoundButton> <ArrowBigDown/> </RoundButton> */}
+            {/* <RoundButton /> */}
+            {/* <RoundButton /> */}
+          </div>
         </div>
         <div className="bg-img">
           <div className="contact-box-wrapper" ref={ref}>
@@ -149,7 +233,7 @@ const Contact = () => {
                   dir="auto"
                   type="text"
                   autoCorrect="false"
-                  placeholder="مثال: محمد صلاح"
+                  placeholder={t("namePlaceholder")}
                 />
               </div>
               <div className="input-wrapper">
@@ -175,7 +259,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="table-phone">
+      <div className="table-phone" ref={phoneRef}>
         <TablePhone />
       </div>
     </motion.section>
