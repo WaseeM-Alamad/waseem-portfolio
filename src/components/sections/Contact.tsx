@@ -143,9 +143,19 @@ const Contact = () => {
               fontSize: "7.5rem",
             }}
           >
-            <span style={{ paddingTop: ".5rem", whiteSpace: "nowrap" }}>
+            <motion.span
+              initial={{ scale: 0.85, opacity: .9}}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                // delay: 0.1,
+                duration: 1.3,
+                ease: [0.55, 0, 0.15, 1],
+              }}
+              style={{ paddingTop: ".5rem", whiteSpace: "nowrap" }}
+            >
               {t("letsConnect")}
-            </span>{" "}
+            </motion.span>
             <svg
               className="lang-flip"
               style={{
@@ -172,7 +182,7 @@ const Contact = () => {
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                  delay: 0.1,
+                  // delay: 0.1,
                   duration: 1.2,
                   ease: [0.55, 0.6, 0.15, 1],
                 }}
