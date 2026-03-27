@@ -6,8 +6,10 @@ import ArrowButton from "../tools/ArrowButton";
 import TablePhone from "../icons/TablePhone";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import RoundButton from "../tools/RoundButton";
-import { ArrowBigDown, Instagram } from "lucide-react";
+import OutlinedButton from "../buttons/OutlinedButton";
+import Github from "../icons/Github";
+import LinkedIn from "../icons/LinkedIn";
+import Instagram from "../icons/Instagram";
 
 const Contact = () => {
   const locale = useLocale();
@@ -144,7 +146,7 @@ const Contact = () => {
             }}
           >
             <motion.span
-              initial={{ scale: 0.85, opacity: .9}}
+              initial={{ scale: 0.85, opacity: 0.9 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{
@@ -203,11 +205,72 @@ const Contact = () => {
             <br />
             {t("subtitle")}
           </motion.div>
-          <div style={{ display: "flex", gap: "2rem", marginTop: "1.5rem" }}>
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: 0.4,
+              duration: 0.6,
+              ease: [0.55, 0, 0.15, 1],
+            }}
+            style={{ display: "flex", gap: "2rem", marginTop: "1.5rem" }}
+          >
+            <OutlinedButton
+              href="https://instagram.com/waseemalamadd"
+              target="_blank"
+            >
+              <div
+                style={{
+                  display: "flex",
+                  gap: ".3rem",
+                  alignItems: "center",
+                  fontSize: "1.5rem",
+                  flexShrink: "0",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <Instagram size={30} /> <span>Instagram</span>
+              </div>
+            </OutlinedButton>
+            <OutlinedButton
+              href="https://www.linkedin.com/in/waseemalamad/"
+              target="_blank"
+            >
+              <div
+                style={{
+                  display: "flex",
+                  gap: ".3rem",
+                  alignItems: "center",
+                  fontSize: "1.5rem",
+                  flexShrink: "0",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <LinkedIn size={30} /> <span>Linkedin</span>
+              </div>
+            </OutlinedButton>
+            <OutlinedButton
+              href="https://github.com/WaseeM-Alamad"
+              target="_blank"
+            >
+              <div
+                style={{
+                  display: "flex",
+                  gap: ".3rem",
+                  alignItems: "center",
+                  fontSize: "1.5rem",
+                  flexShrink: "0",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <Github size={31} /> <span>Github</span>
+              </div>
+            </OutlinedButton>
             {/* <RoundButton> <ArrowBigDown/> </RoundButton> */}
             {/* <RoundButton /> */}
             {/* <RoundButton /> */}
-          </div>
+          </motion.div>
         </div>
         <div className="bg-img">
           <div className="contact-box-wrapper" ref={ref}>

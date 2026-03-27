@@ -23,6 +23,7 @@ button {
   position: relative;
   text-decoration: none;
   word-break: break-word;
+  flex-shrink: 0;
 }
 
 @media (hover: hover) {

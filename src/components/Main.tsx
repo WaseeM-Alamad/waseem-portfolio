@@ -136,14 +136,14 @@ const Main = () => {
               href="https://github.com/WaseeM-Alamad"
               target="_blank"
             >
-              <Github />
+              <Github color="var(--color-text-primary)" />
             </a>
             <a
               className="home-link"
               href="https://www.linkedin.com/in/waseemalamad/"
               target="_blank"
             >
-              <LinkedIn />
+              <LinkedIn color="var(--color-text-primary)" />
             </a>
           </motion.div>
           <div className="panel-inner">

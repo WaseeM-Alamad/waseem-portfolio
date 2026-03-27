@@ -2,7 +2,16 @@ import { MouseEventHandler, ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import "@/styles/outlinedBtn.css";
 
-export default function GSAPButton({ children, onClick }: { children?: ReactNode, onClick: MouseEventHandler }) {
+type Props = React.ComponentPropsWithoutRef<"a"> & {
+  children?: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+};
+
+export default function GSAPButton({
+  children,
+  onClick,
+  ...anchorProps
+}: Props) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const flairRef = useRef<HTMLSpanElement>(null);
 
@@ -74,14 +83,16 @@ export default function GSAPButton({ children, onClick }: { children?: ReactNode
   }, []);
 
   return (
-    <button
-      ref={buttonRef}
-      onClick={onClick}
-      className="button button--stroke border-radius"
-      data-block="button"
-    >
-      <span ref={flairRef} className="button__flair" />
-      <span className="button__label">{children}</span>
-    </button>
+    <a {...anchorProps}>
+      <button
+        ref={buttonRef}
+        onClick={onClick}
+        className="button button--stroke border-radius"
+        data-block="button"
+      >
+        <span ref={flairRef} className="button__flair" />
+        <span className="button__label">{children}</span>
+      </button>
+    </a>
   );
 }
