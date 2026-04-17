@@ -1,6 +1,6 @@
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import ExclamationMark from "../icons/ExclamationMark";
 import ArrowButton from "../tools/ArrowButton";
 import TablePhone from "../icons/TablePhone";
@@ -10,10 +10,10 @@ import OutlinedButton from "../buttons/OutlinedButton";
 import Github from "../icons/Github";
 import LinkedIn from "../icons/LinkedIn";
 import Instagram from "../icons/Instagram";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 const Contact = () => {
-  const locale = useLocale();
-  const isEn = locale === "en";
+  const { isAr } = useGlobalContext();
   const t = useTranslations("contact");
   const ref = useRef(null);
   const phoneRef = useRef(null);
@@ -102,7 +102,7 @@ const Contact = () => {
     gsap.fromTo(
       leftPanel,
       {
-        x: isEn ? -15 : 15,
+        x: isAr ? 15 : -15,
         scale: 0.94,
       },
       {
@@ -121,7 +121,7 @@ const Contact = () => {
     return () => {
       ScrollTrigger.killAll();
     };
-  }, [isEn]);
+  }, [isAr]);
 
   return (
     <motion.section id="contact">
@@ -172,7 +172,7 @@ const Contact = () => {
             >
               <motion.path
                 d={
-                  isEn
+                  !isAr
                     ? "M10 15.2777C230.452 22.0184 713.089 14.5398 746 10.001"
                     : "M10 14.2777C230.452 21.0184 490.589 14.5398 523.5 10.001"
                 }

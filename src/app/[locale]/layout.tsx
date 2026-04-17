@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/contexts/SmoothScrollContext";
+import { GlobalProvider } from "@/contexts/GlobalContext";
 
 const hilmar = localFont({
   src: [
@@ -68,7 +69,9 @@ export default async function RootLayout({
     >
       <body suppressHydrationWarning className={hilmar.variable}>
         <NextIntlClientProvider>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          <GlobalProvider>
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </GlobalProvider>
         </NextIntlClientProvider>
       </body>
     </html>

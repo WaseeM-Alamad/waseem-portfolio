@@ -4,8 +4,10 @@ import AnimatedBurst from "../tools/AnimatedBurst";
 import { useTranslations } from "next-intl";
 import OutlinedButton from "../buttons/OutlinedButton";
 import { useSmoothScroll } from "@/contexts/SmoothScrollContext";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 const Home = () => {
+  const { isAr } = useGlobalContext();
   const t = useTranslations("home");
   const { scrollTo } = useSmoothScroll();
 
@@ -36,12 +38,12 @@ const Home = () => {
         >
           <div
             style={{
-              fontSize: "7rem",
+              fontSize: "clamp(3.5rem, 10vw, 7rem)",
               fontWeight: "600",
               textAlign: "center",
               marginBottom: "1.5rem",
               width: "fit-content",
-              whiteSpace: "nowrap"
+              whiteSpace: "nowrap",
             }}
           >
             <span style={{ position: "relative" }}>
@@ -50,7 +52,15 @@ const Home = () => {
             </span>
             <br />
             {t("interactive")}
-            <br /> {t("webExperiences")}
+            <br />{" "}
+            <span
+              style={{
+                fontSize: `clamp(${isAr ? " 3.5rem" : "2.8rem"}, 10vw, 7rem)`,
+              }}
+            >
+              {" "}
+              {t("webExperiences")}
+            </span>
           </div>
 
           <motion.p
@@ -62,10 +72,12 @@ const Home = () => {
               ease: [0.55, 0, 0.15, 1],
             }}
             style={{
-              whiteSpace: "pre-line",
+              // whiteSpace: "pre-line",
               textAlign: "center",
-              fontSize: "1.6rem",
+              // fontSize: "1.6rem",
+              fontSize: "clamp(1.1rem, 3vw, 1.6rem)",
               fontWeight: "600",
+              maxWidth: "50rem",
             }}
           >
             {t("homeDesc")}
@@ -81,10 +93,18 @@ const Home = () => {
             className="home-btns"
           >
             <OutlinedButton onClick={() => scrollTo("#notopia")}>
-              {t("myWork")}
+              <span
+                style={{ display: "flex", fontSize: "clamp(1.3rem, 4vw, 2rem)" }}
+              >
+                {t("myWork")}
+              </span>
             </OutlinedButton>
             <OutlinedButton onClick={() => scrollTo("#contact")}>
-              {t("contactMe")}
+              <span
+                style={{ display: "flex", fontSize: "clamp(1.3rem, 4vw, 2rem)" }}
+              >
+                {t("contactMe")}
+              </span>
             </OutlinedButton>
           </motion.div>
         </motion.div>

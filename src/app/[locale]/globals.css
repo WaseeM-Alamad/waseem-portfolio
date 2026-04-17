@@ -296,6 +296,8 @@ main > *:nth-child(2) {
   background-color: #50fc98;
   border-radius: 3.5rem;
   padding-bottom: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .contact {
@@ -310,6 +312,12 @@ main > *:nth-child(2) {
   padding-bottom: 0 !important;
   margin-bottom: 0rem;
   box-sizing: border-box;
+}
+
+@media (max-width: 1114px) {
+  :root {
+    --sidebar-width: 0rem;
+  }
 }
 
 input {

@@ -5,18 +5,18 @@ import Home from "./sections/Home";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
-import Notopia from "./projects/Notopia";
-import Caterfy from "./projects/Caterfy";
 import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LinkedIn from "./icons/LinkedIn";
 import Github from "./icons/Github";
 import { motion } from "framer-motion";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
+  const { isMobileView } = useGlobalContext();
   const [currentSection, setCurrentSection] = useState<string>("home");
   const mainRef = useRef<HTMLElement | null>(null);
   const shadowRef = useRef<HTMLDivElement | null>(null);
@@ -24,7 +24,7 @@ const Main = () => {
   useDetectSection({ setCurrentSection });
 
   useLayoutEffect(() => {
-    if (!mainRef.current) return;
+    if (!mainRef.current || isMobileView) return;
 
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>(".panel");
@@ -92,7 +92,7 @@ const Main = () => {
     }, mainRef);
 
     return () => ctx.revert();
-  }, [mainRef]);
+  }, [mainRef, isMobileView]);
 
   return (
     <div>

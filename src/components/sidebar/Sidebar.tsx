@@ -11,16 +11,17 @@ import {
 } from "framer-motion";
 import { projects, sections } from "@/utils/sectionsData";
 import { useSmoothScroll } from "../../contexts/SmoothScrollContext";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 const Sidebar = ({ currentSection }: { currentSection: string }) => {
-  const locale = useLocale();
-  const isEn = locale === "en";
+  const { isMobileView, isAr } = useGlobalContext();
   const t = useTranslations("sidebar");
 
   const { scrollYProgress } = useScroll();
   const { scrollTo } = useSmoothScroll();
 
   const height = useTransform(scrollYProgress, [0, 1], ["5%", "100%"]);
+  const xVal = isAr ? 200 : -200;
 
   const scrollIntoView = (id: string) => {
     if (id === "home") {
@@ -37,13 +38,16 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ x: isEn ? -200 : 200 }}
-        animate={{ x: 0 }}
+        initial={{ x: xVal }}
+        animate={{
+          x: isMobileView ? xVal : 0,
+          display: isMobileView ? "none" : "",
+        }}
         transition={{
           type: "spring",
           stiffness: 400,
           damping: 50,
-          mass: .3,
+          mass: 0.3,
         }}
         className="sidebar-wrapper"
       >
@@ -53,7 +57,11 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
-          <div id="general-label" className="side-label" style={{ marginTop: "2rem" }}>
+          <div
+            id="general-label"
+            className="side-label"
+            style={{ marginTop: "2rem" }}
+          >
             {t("general")}
           </div>
           <div className="side-sections-wrapper">
@@ -74,7 +82,9 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
               })}
             </div>
             <div className="side-sections-container">
-              <div id="projects-label" className="side-label">{t("projects")}</div>
+              <div id="projects-label" className="side-label">
+                {t("projects")}
+              </div>
               {projects.map(({ id, Icon }) => {
                 return (
                   <div

@@ -11,7 +11,7 @@ aside {
   border-end-end-radius: 1.5rem;
   border-start-end-radius: 1.5rem;
   height: fit-content;
-  width: var(--sidebar-width);
+  width: 10rem;
   display: flex;
   /* gap: 2rem; */
   flex-direction: column;

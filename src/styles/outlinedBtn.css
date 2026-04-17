@@ -6,7 +6,7 @@ button {
 .button {
   align-items: center;
   user-select: none;
-  background: 0 0;
+  /* background: 0 0; */
   border: none;
   border-radius: 6.25rem;
   color: var(--color-text-primary);
