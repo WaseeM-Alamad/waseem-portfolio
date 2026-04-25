@@ -23,7 +23,7 @@ aside {
   user-select: none;
 }
 
-.logo {
+.side-logo {
   font-size: 1.5rem;
   margin-bottom: 1.2rem;
   font-weight: 600;
@@ -80,7 +80,7 @@ aside {
   padding: 0 0.3rem;
 }
 
-.top-toggle {
+.side-toggle {
   display: flex;
   font-size: 0.9rem;
   align-items: center;
@@ -95,15 +95,15 @@ aside {
   transition: border 0.2s ease;
 }
 
-.top-toggle > * {
+.side-toggle > * {
   transition: color 0.2s ease;
 }
 
-.top-toggle:hover {
+.side-toggle:hover {
   border-color: var(--color-primary);
 }
 
-.top-toggle:hover > * {
+.side-toggle:hover > * {
   color: var(--color-primary);
 }
 

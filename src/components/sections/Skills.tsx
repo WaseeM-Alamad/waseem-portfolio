@@ -5,12 +5,14 @@ import { Observer } from "gsap/all";
 import { Database, LayoutGrid, Shapes, Smartphone } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
 
 const GAP = 70;
 
 export default function StackedCards() {
+  const { isMobileView } = useGlobalContext();
   const t = useTranslations("skills");
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -94,7 +96,7 @@ export default function StackedCards() {
         const content = card.querySelector(".card-content");
         ScrollTrigger.create({
           trigger: card,
-          start: `top-=${(index + 1) * GAP} top`,
+          start: `top-=${(index + 1 + (isMobileView ? 0.7 : 0)) * GAP} top`,
           end: () => lastCardST.start,
           pin: true,
           pinSpacing: false,
@@ -117,7 +119,7 @@ export default function StackedCards() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobileView]);
 
   return (
     <section id="skills" ref={containerRef}>

@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
 import About from "./sections/About";
@@ -12,19 +12,34 @@ import LinkedIn from "./icons/LinkedIn";
 import Github from "./icons/Github";
 import { motion } from "framer-motion";
 import { useGlobalContext } from "@/contexts/GlobalContext";
+import Navbar from "./navbar/Navbar";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
   const { isMobileView } = useGlobalContext();
   const [currentSection, setCurrentSection] = useState<string>("home");
+  const [willSlideUnder, SetWillSlideUnder] = useState<boolean>(false);
   const mainRef = useRef<HTMLElement | null>(null);
   const shadowRef = useRef<HTMLDivElement | null>(null);
 
   useDetectSection({ setCurrentSection });
 
   useLayoutEffect(() => {
-    if (!mainRef.current || isMobileView) return;
+    const handler = () => {
+      const width = window.innerWidth;
+
+      SetWillSlideUnder(width > 1000);
+    };
+
+    handler();
+
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [SetWillSlideUnder]);
+
+  useLayoutEffect(() => {
+    if (!mainRef.current || !willSlideUnder) return;
 
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>(".panel");
@@ -92,11 +107,12 @@ const Main = () => {
     }, mainRef);
 
     return () => ctx.revert();
-  }, [mainRef, isMobileView]);
+  }, [mainRef, willSlideUnder]);
 
   return (
     <div>
       <Sidebar currentSection={currentSection} />
+      <Navbar currentSection={currentSection} />
       <main ref={mainRef}>
         <div
           ref={shadowRef}

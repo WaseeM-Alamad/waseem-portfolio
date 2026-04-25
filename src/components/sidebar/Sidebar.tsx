@@ -1,6 +1,6 @@
 "use client";
 import "@/styles/sidebar.css";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import ThemeToggle from "../tools/ThemeToggle";
 import LocaleSwitcher from "../tools/LocaleSwitcher";
 import {
@@ -52,7 +52,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
         className="sidebar-wrapper"
       >
         <aside>
-          <div className="logo">waseem</div>
+          <div className="side-logo">waseem</div>
           <div className="top-settings">
             <LocaleSwitcher />
             <ThemeToggle />

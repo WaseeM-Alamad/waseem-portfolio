@@ -41,6 +41,7 @@ export default function AnimatedBurst({
   return (
     <div
       style={{
+        display: "flex",
         position: "absolute",
         top: -90,
         insetInlineEnd: -100,
@@ -49,8 +50,8 @@ export default function AnimatedBurst({
     >
       <svg
         ref={svgRef}
-        width={size}
-        height={(size * 148) / 169}
+        width={130}
+        height={114}
         viewBox="0 0 169 148"
         className="animated-burst"
       >

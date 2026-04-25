@@ -318,6 +318,10 @@ main > *:nth-child(2) {
   :root {
     --sidebar-width: 0rem;
   }
+
+  .home {
+    padding-top: 6rem;
+  }
 }
 
 input {
@@ -403,4 +407,34 @@ textarea {
   border-radius: 1.2rem;
   will-change: transform;
   z-index: 0;
+}
+
+.about-container {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 1660px) {
+  .about-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1500px) {
+  #skills {
+    padding: 0 10% !important;
+  }
+}
+
+@media (max-width: 1300px) {
+  #skills {
+    padding: 0 8% !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .animated-burst {
+  }
 }

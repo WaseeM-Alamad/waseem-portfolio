@@ -35,12 +35,7 @@ const About = () => {
         {t("waseemAlamad")}
       </motion.h2>
       <div
-        style={{
-          display: "flex",
-          gap: "4rem",
-          alignItems: "center",
-          marginTop: "3rem",
-        }}
+      className="about-container"
       >
         <div className="about-text-wrapper">
           {points.map((point) => (
