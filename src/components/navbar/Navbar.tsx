@@ -18,6 +18,7 @@ import { useGlobalContext } from "@/contexts/GlobalContext";
 const Navbar = ({ currentSection }: { currentSection: string }) => {
   const { isMobileView, isAr } = useGlobalContext();
   const t = useTranslations("sidebar");
+  const t2 = useTranslations("home");
 
   const { scrollYProgress } = useScroll();
   const { scrollTo } = useSmoothScroll();
@@ -54,7 +55,7 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
       >
         <nav>
           <div className="logo" onClick={() => scrollIntoView("home")}>
-            WaseeM
+            {t2("WaseeM")}
           </div>
           <div className="top-navigation">
             {sections.map(({ id }) => (

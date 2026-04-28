@@ -19,7 +19,6 @@ export default function LocaleSwitcher({
   };
 
   return (
-    <div className={inSidebar ? undefined : "top-util"}>
       <div
         className={`${inSidebar ? "side-toggle" : "top-toggle"} border-radius-btn`}
         onClick={() => {
@@ -29,6 +28,5 @@ export default function LocaleSwitcher({
         {inSidebar && <Globe size={15} />}
         <div>{locale === "en" ? "AR" : "EN"}</div>
       </div>
-    </div>
   );
 }

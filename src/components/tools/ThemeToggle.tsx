@@ -30,13 +30,11 @@ const ThemeToggle = ({ inSidebar = true }: { inSidebar?: boolean }) => {
   }, [setTheme]);
 
   return (
-    <div className={inSidebar ? undefined : "top-util"}>
-      <div
-        className={`${inSidebar ? "side-toggle" : "top-toggle"} border-radius-btn`}
-        onClick={toggleDarkMode}
-      >
-        {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-      </div>
+    <div
+      className={`${inSidebar ? "side-toggle" : "top-toggle"} border-radius-btn`}
+      onClick={toggleDarkMode}
+    >
+      {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
     </div>
   );
 };

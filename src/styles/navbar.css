@@ -3,7 +3,7 @@
   position: fixed;
   width: 100%;
   z-index: 100;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 nav {
@@ -14,10 +14,11 @@ nav {
   justify-content: space-between;
   max-width: 90%;
   height: var(--navbar-height);
+  box-shadow: 0 6px 8px -6px rgba(67, 71, 85, 0.1);
   box-sizing: border-box;
   width: 100%;
-  background-color: #fff;
-  border-radius: 1rem;
+  background-color: rgba(255, 255, 255);
+  border-radius: 2rem;
   transition:
     background-color 0.3s,
     color 0.3s;
@@ -29,6 +30,7 @@ nav > * {
 
 .logo {
   font-size: 1.6rem;
+  font-weight: 500;
   color: var(--color-text-primary);
   cursor: pointer;
 }
@@ -113,37 +115,30 @@ nav > * {
   flex-shrink: 0;
 }
 
-.top-util {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: var(--color-primary);
-  padding: 0.5rem;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  transition-property: color, background-color;
-}
-
 .top-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--color-text-primary);
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 50%;
+
   cursor: pointer;
+  color: #fff;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-property: color, background-color;
 }
 
 .top-toggle > * {
   flex-shrink: 0;
 }
 
-
-@media (max-width: 920px) {
-
+/* @media (max-width: 920px) {
   :root {
     --navbar-height: 3.7rem;
   }
-  
-}
+} */
