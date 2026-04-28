@@ -30,13 +30,14 @@ const About = () => {
           damping: 20,
           mass: 2,
         }}
-        style={{ marginBottom: "1.5rem" }}
+        style={{
+          marginBottom: "1.5rem",
+          fontSize: "clamp(2.6rem, 7vw, 4.5rem)",
+        }}
       >
         {t("waseemAlamad")}
       </motion.h2>
-      <div
-      className="about-container"
-      >
+      <div className="about-container">
         <div className="about-text-wrapper">
           {points.map((point) => (
             <motion.div

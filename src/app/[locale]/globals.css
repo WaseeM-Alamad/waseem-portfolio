@@ -137,8 +137,10 @@ section {
   color: var(--color-text-primary);
   font-size: 3rem;
   font-weight: 500;
-  padding: 1rem 5rem;
-  padding-inline-start: calc(var(--sidebar-width) + 5rem) !important;
+  padding: 1rem clamp(2rem, 9vw, 5rem) !important;
+  padding-inline-start: calc(
+    var(--sidebar-width) + clamp(2rem, 9vw, 5rem)
+  ) !important;
   box-sizing: border-box;
   transition: color 0.5s ease;
 }
@@ -239,11 +241,17 @@ section > * {
 .about-point {
   display: flex;
   /* align-items: center; */
-  gap: 1.5rem;
+  font-size: clamp(1.4rem, 4vw, 1.875rem);
+  gap: clamp(0.5rem, 3vw, 1.5rem);
+}
+
+.about-point svg {
+  height: clamp(30px, 4.5vw, 40px);
+  width: clamp(30px, 4.5vw, 40px);
 }
 
 #about {
-  padding-bottom: 10rem;
+  padding-bottom: 10rem !important;
 }
 
 #skills {
