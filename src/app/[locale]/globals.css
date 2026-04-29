@@ -101,7 +101,14 @@ body {
 button {
   background-color: var(--color-bg);
   outline: none;
+  border: none;
   padding: 0.2rem;
+}
+
+button,
+a,
+div {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .border-radius-btn {
@@ -137,9 +144,9 @@ section {
   color: var(--color-text-primary);
   font-size: 3rem;
   font-weight: 500;
-  padding: 1rem clamp(2rem, 9vw, 5rem) !important;
+  padding: 1rem clamp(0.5rem, 7vw, 5rem) !important;
   padding-inline-start: calc(
-    var(--sidebar-width) + clamp(2rem, 9vw, 5rem)
+    var(--sidebar-width) + clamp(0.5rem, 7vw, 5rem)
   ) !important;
   box-sizing: border-box;
   transition: color 0.5s ease;
@@ -157,7 +164,7 @@ section > * {
   position: relative;
   display: flex;
   pointer-events: all;
-  height: 100%;
+  min-height: 100svh;
   padding-top: 1rem;
   padding-bottom: 3rem;
   box-sizing: border-box;
@@ -176,7 +183,7 @@ section > * {
   justify-content: center;
   gap: 0.8rem;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: clamp(1rem, 5vw, 3rem);
 }
 
 .home-btns path {
@@ -189,7 +196,7 @@ section > * {
 
 .panel {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   /* overflow: hidden; */
   box-sizing: border-box;
@@ -203,20 +210,20 @@ section > * {
 
 .panel-home {
   margin-bottom: 7rem;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .panel-home .panel-inner {
-  height: 100vh;
+  height: 100dvh;
 }
 
 .panel-content {
-  min-height: 100vh;
+  min-height: 100dvh;
   z-index: 2;
   background: var(--color-bg);
-  border-top-left-radius: 3.5rem;
-  border-top-right-radius: 3.5rem;
-  padding-top: 6rem;
+  border-top-left-radius: clamp(2.1875rem, 4vw, 3.5rem);
+  border-top-right-radius: clamp(2.1875rem, 4vw, 3.5rem);
+  /* padding-top: 6rem; */
   transition:
     color 0.5s ease,
     background-color 0.5s ease;
@@ -241,16 +248,17 @@ section > * {
 .about-point {
   display: flex;
   /* align-items: center; */
-  font-size: clamp(1.4rem, 4vw, 1.875rem);
+  font-size: clamp(1.2rem, 4vw, 1.875rem);
   gap: clamp(0.5rem, 3vw, 1.5rem);
 }
 
 .about-point svg {
-  height: clamp(30px, 4.5vw, 40px);
-  width: clamp(30px, 4.5vw, 40px);
+  height: clamp(25px, 5vw, 40px);
+  width: clamp(25px, 5vw, 40px);
 }
 
 #about {
+  padding-top: clamp(4rem, 10vw, 6rem) !important;
   padding-bottom: 10rem !important;
 }
 
@@ -286,8 +294,8 @@ main > *:nth-child(2) {
   width: fit-content;
   font-size: 1.3rem;
   color: var(--color-text-primary);
-  padding: 2rem;
-  padding-bottom: 1rem;
+  padding: clamp(1rem, 1vw, 2rem);
+  padding-bottom: 0.5rem;
 }
 
 .home-link {
@@ -302,7 +310,7 @@ main > *:nth-child(2) {
 #contact {
   position: relative;
   background-color: #50fc98;
-  border-radius: 3.5rem;
+  border-radius: clamp(2.1875rem, 4vw, 3.5rem);
   padding-bottom: 0 !important;
   padding-left: 0;
   padding-right: 0;
@@ -325,10 +333,6 @@ main > *:nth-child(2) {
 @media (max-width: 1114px) {
   :root {
     --sidebar-width: 0rem;
-  }
-
-  .home {
-    padding-top: 6rem;
   }
 }
 

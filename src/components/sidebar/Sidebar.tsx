@@ -81,7 +81,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
                 );
               })}
             </div>
-            <div className="side-sections-container">
+            {/* <div className="side-sections-container">
               <div id="projects-label" className="side-label">
                 {t("projects")}
               </div>
@@ -98,7 +98,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </aside>
       </motion.div>

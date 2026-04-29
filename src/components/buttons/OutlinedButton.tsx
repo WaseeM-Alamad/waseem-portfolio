@@ -42,6 +42,8 @@ export default function GSAPButton({
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
+      const isTouch = window.matchMedia("(hover: none)").matches;
+      if (isTouch) return;
       const { x, y } = getXY(e);
       xSet(x);
       ySet(y);

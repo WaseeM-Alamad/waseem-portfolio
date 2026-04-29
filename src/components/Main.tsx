@@ -13,6 +13,7 @@ import Github from "./icons/Github";
 import { motion } from "framer-motion";
 import { useGlobalContext } from "@/contexts/GlobalContext";
 import Navbar from "./navbar/Navbar";
+import Projects from "./sections/Projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -165,6 +166,7 @@ const Main = () => {
           <div className="panel-inner">
             <About />
             <Skills />
+            <Projects />
             <Contact />
             {/* <Notopia /> */}
             {/* <Caterfy /> */}

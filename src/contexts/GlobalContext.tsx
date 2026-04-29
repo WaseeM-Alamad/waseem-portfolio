@@ -4,9 +4,9 @@ import { useLocale } from "next-intl";
 import {
   createContext,
   useContext,
-  useEffect,
   ReactNode,
   useState,
+  useLayoutEffect,
 } from "react";
 
 interface GlobalContextType {
@@ -30,7 +30,7 @@ export function GlobalProvider({ children }: GlobalProviderProps) {
   const locale = useLocale();
   const isAr = locale === "ar";
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handler = () => {
       setIsMobileView(window.innerWidth <= 1114);
     };

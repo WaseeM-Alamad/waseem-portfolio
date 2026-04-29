@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import "@/styles/navbar.css";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "../tools/LocaleSwitcher";
@@ -14,9 +14,11 @@ import {
 } from "framer-motion";
 import { useSmoothScroll } from "@/contexts/SmoothScrollContext";
 import { useGlobalContext } from "@/contexts/GlobalContext";
+import NavMenuBtn from "./NavMenuBtn";
 
 const Navbar = ({ currentSection }: { currentSection: string }) => {
   const { isMobileView, isAr } = useGlobalContext();
+  const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("sidebar");
   const t2 = useTranslations("home");
 
@@ -59,7 +61,11 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
           </div>
           <div className="top-navigation">
             {sections.map(({ id }) => (
-              <div key={id} className={currentSection === id ? "selected" : ""}>
+              <div
+                style={{ height: "fit-content" }}
+                key={id}
+                className={currentSection === id ? "selected" : ""}
+              >
                 <button
                   aria-label={t(id)}
                   className="top-btn"
@@ -72,6 +78,7 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
           <div className="top-settings">
             <LocaleSwitcher inSidebar={false} />
             <ThemeToggle inSidebar={false} />
+            <NavMenuBtn isOpen={menuOpen} setIsOpen={setMenuOpen} />
           </div>
         </nav>
       </motion.div>

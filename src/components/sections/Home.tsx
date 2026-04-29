@@ -47,7 +47,7 @@ const Home = () => {
             }}
           >
             <span style={{ position: "relative" }}>
-              <AnimatedBurst size={130} delay={0.52} />
+              {/* <AnimatedBurst size={130} delay={0.52} /> */}
               {t("crafting")}
             </span>
             <br />
@@ -92,7 +92,7 @@ const Home = () => {
             }}
             className="home-btns"
           >
-            <OutlinedButton onClick={() => scrollTo("#notopia")}>
+            <OutlinedButton onClick={() => scrollTo("#projects")}>
               <span
                 style={{ display: "flex", fontSize: "clamp(1.3rem, 4vw, 2rem)" }}
               >

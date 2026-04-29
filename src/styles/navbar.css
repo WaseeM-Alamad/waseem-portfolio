@@ -30,7 +30,7 @@ nav > * {
 
 .logo {
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: bold;
   color: var(--color-text-primary);
   cursor: pointer;
 }
@@ -38,7 +38,9 @@ nav > * {
 .top-navigation {
   position: relative;
   display: flex;
+  align-items: center;
   padding: 0.5rem 0;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -108,6 +110,7 @@ nav > * {
 
 .top-settings {
   display: flex;
+  align-items: center;
   gap: 0.3rem;
 }
 
@@ -123,7 +126,7 @@ nav > * {
   width: 1.4rem;
   height: 1.4rem;
   padding: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border-radius: 50%;
 
   cursor: pointer;
@@ -137,8 +140,53 @@ nav > * {
   flex-shrink: 0;
 }
 
-/* @media (max-width: 920px) {
-  :root {
-    --navbar-height: 3.7rem;
+@media (max-width: 910px) {
+  nav {
+    max-width: calc(100% - 30px);
   }
-} */
+}
+
+@media (max-width: 820px) {
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .top-btn {
+    font-size: 1rem;
+    width: 85px;
+    height: 45px;
+  }
+
+  .top-toggle {
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .slider {
+    display: none;
+  }
+
+  .top-navigation {
+    display: none;
+  }
+
+  .top-settings {
+    gap: 0.4rem;
+  }
+
+  .top-settings button {
+    margin-inline-start: .5rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    padding-inline-end: 1rem;
+    padding-inline-start: 1.5rem;
+  }
+}
