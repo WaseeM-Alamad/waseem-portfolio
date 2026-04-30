@@ -96,7 +96,7 @@ export default function StackedCards() {
         const content = card.querySelector(".card-content");
         ScrollTrigger.create({
           trigger: card,
-          start: `top-=${(index + 1 + (isMobileView ? 0.7 : 0)) * GAP} top`,
+          start: `top-=${(index + 1 + (isMobileView ? 0.5 : 0)) * GAP} top`,
           end: () => lastCardST.start,
           pin: true,
           pinSpacing: false,
@@ -110,7 +110,7 @@ export default function StackedCards() {
             scrollTrigger: {
               trigger: cards[index + 1],
               start: "top 54%",
-              end: `top-=${(index + 2) * GAP * 1.05} top`,
+              end: `top-=${(index + 2) * GAP * 1.15} top`,
               scrub: true,
             },
           });
@@ -134,7 +134,7 @@ export default function StackedCards() {
           <div
             style={{
               display: "flex",
-              gap: "1.5rem",
+              gap: "clamp(1rem, 2vw, 1.5rem)",
               alignItems: "center",
               height: "2.5rem",
             }}
@@ -143,12 +143,17 @@ export default function StackedCards() {
               style={{
                 flexShrink: 0,
                 height: "100%",
-                width: ".6rem",
+                width: "clamp(0.4rem, 1vw, .6rem)",
                 borderRadius: "1rem",
                 backgroundColor: card.color,
               }}
             />
-            <span style={{ fontSize: "2.5rem", whiteSpace: "nowrap" }}>
+            <span
+              style={{
+                fontSize: "clamp(1.6rem, 4vw, 2.5rem)",
+                whiteSpace: "nowrap",
+              }}
+            >
               {" "}
               {card.title}
             </span>
@@ -159,9 +164,9 @@ export default function StackedCards() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              fontSize: "1.5rem",
-              marginTop: "2rem",
-              paddingInlineStart: "2rem",
+              fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
+              marginTop: "clamp(1.2rem, 3vw, 2rem)",
+              paddingInlineStart: "clamp(1rem, 4vw, 2rem)",
               flex: "1",
             }}
           >
@@ -172,13 +177,14 @@ export default function StackedCards() {
                   style={{
                     display: "flex",
                     alignItems: "center",
+                    marginTop: '.4rem',
                     gap: ".8rem",
                   }}
                 >
                   <svg
                     style={{ flexShrink: 0 }}
                     width="10"
-                    height="40"
+                    height="10"
                     viewBox="0 0 40 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -188,14 +194,12 @@ export default function StackedCards() {
                       fill={card.color}
                     />
                   </svg>
-                  <span>{item}</span>
+                  <span className="skill-point">{item}</span>
                 </div>
               ))}
             </div>
             <Image
-              className={
-                card.image.includes("frontend") ? undefined : "lang-flip"
-              }
+              className={`skill-img ${card.image.includes("frontend") ? undefined : "lang-flip"}`}
               src={card.image}
               alt=""
               width={350}

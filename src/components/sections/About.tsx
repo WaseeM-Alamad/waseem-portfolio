@@ -77,6 +77,7 @@ const About = () => {
 
         <motion.div style={{ y, rotate }}>
           <Image
+            className="about-img"
             src="https://picsum.photos/500/703"
             alt=""
             width={500}
