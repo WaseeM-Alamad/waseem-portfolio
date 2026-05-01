@@ -85,6 +85,14 @@
   --color-primary: #a874ff;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
+html[mobile-menu-open="1"] {
+  overflow: hidden !important;
+}
+
 html[lang="ar"] * {
   direction: right;
   text-align: right;
@@ -503,8 +511,6 @@ textarea {
 }
 
 @media (max-width: 510px) {
-
-
   #skills > .colored-card:first-child {
     /* padding-top: 0 !important; */
   }

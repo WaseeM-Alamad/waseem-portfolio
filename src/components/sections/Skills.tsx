@@ -85,7 +85,7 @@ export default function StackedCards() {
       const cards = gsap.utils.toArray<HTMLElement>(".colored-card");
       if (!cards.length) return;
 
-      ScrollTrigger.normalizeScroll(true);
+      // ScrollTrigger.normalizeScroll(true);
 
       const lastCardST = ScrollTrigger.create({
         trigger: cards[cards.length - 1],

@@ -31,10 +31,6 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
     scrollTo(`#${id}`);
   };
 
-  const capitalizeInitial = (string: string) => {
-    return string[0].toUpperCase() + string.slice(1);
-  };
-
   return (
     <AnimatePresence>
       <motion.div

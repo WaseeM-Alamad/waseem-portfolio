@@ -1,7 +1,11 @@
 "use client";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import LocomotiveScroll from "locomotive-scroll";
 import { createContext, useContext, useEffect, useRef, ReactNode } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollToOptions {
   offset?: number;
@@ -15,13 +19,17 @@ interface SmoothScrollContextType {
     target: string | HTMLElement | number,
     options?: ScrollToOptions,
   ) => void;
+  stopScroll: () => void;
+  startScroll: () => void;
 }
 
-const SmoothScrollContext = createContext<SmoothScrollContextType>({
-  scrollTo: () => {},
-});
+const SmoothScrollContext = createContext<SmoothScrollContextType | null>(null);
 
-export const useSmoothScroll = () => useContext(SmoothScrollContext);
+export const useSmoothScroll = () => {
+  const ctx = useContext(SmoothScrollContext);
+  if (!ctx) throw new Error("useSmoothScroll must be used inside provider");
+  return ctx;
+};
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -46,12 +54,23 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
           infinite: false,
         },
       });
+
+      // Add this ↓
+      const lenis = locomotiveScrollRef.current?.lenisInstance;
+      if (lenis) {
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
     };
 
     initScroll();
 
     return () => {
       locomotiveScrollRef.current?.destroy();
+      gsap.ticker.remove((time) =>
+        locomotiveScrollRef.current?.lenisInstance?.raf(time * 1000)
+      );
     };
   }, []);
 
@@ -76,8 +95,16 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     }
   };
 
+  const stopScroll = () => {
+    locomotiveScrollRef.current?.lenisInstance?.stop();
+  };
+
+  const startScroll = () => {
+    locomotiveScrollRef.current?.lenisInstance?.start();
+  };
+
   return (
-    <SmoothScrollContext.Provider value={{ scrollTo }}>
+    <SmoothScrollContext.Provider value={{ scrollTo, startScroll, stopScroll }}>
       <div ref={scrollRef}>{children}</div>
     </SmoothScrollContext.Provider>
   );

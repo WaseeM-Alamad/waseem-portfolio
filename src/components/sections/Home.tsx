@@ -94,14 +94,20 @@ const Home = () => {
           >
             <OutlinedButton onClick={() => scrollTo("#projects")}>
               <span
-                style={{ display: "flex", fontSize: "clamp(1.3rem, 4vw, 2rem)" }}
+                style={{
+                  display: "flex",
+                  fontSize: "clamp(1.3rem, 4vw, 2rem)",
+                }}
               >
                 {t("myWork")}
               </span>
             </OutlinedButton>
             <OutlinedButton onClick={() => scrollTo("#contact")}>
               <span
-                style={{ display: "flex", fontSize: "clamp(1.3rem, 4vw, 2rem)" }}
+                style={{
+                  display: "flex",
+                  fontSize: "clamp(1.3rem, 4vw, 2rem)",
+                }}
               >
                 {t("contactMe")}
               </span>
