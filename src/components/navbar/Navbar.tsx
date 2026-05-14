@@ -65,70 +65,72 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
     <>
       <div className="overlay" onClick={() => setMenuOpen(false)} />
       <AnimatePresence>
-        <motion.div
-          initial={{ y: -200 }}
-          animate={{
-            y: !isMobileView ? -200 : 0,
-            display: !isMobileView ? "none" : "",
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 400,
-            damping: 50,
-            mass: 0.3,
-          }}
-          className="nav-wrapper"
-        >
-          <nav>
-            <div className="logo" onClick={() => scrollIntoView("home")}>
-              {t2("WaseeM")}
-            </div>
-            <div className="top-navigation">
-              {sections.map(({ id }) => (
-                <div
-                  style={{ height: "fit-content" }}
-                  key={id}
-                  className={currentSection === id ? "selected" : ""}
-                >
-                  <button
-                    aria-label={t(id)}
-                    className="top-btn"
-                    onClick={() => scrollIntoView(id)}
-                  />
-                </div>
-              ))}
-              <motion.div style={{ width: width }} className="slider" />
-            </div>
-            <div className="top-settings">
-              <LocaleSwitcher inSidebar={false} />
-              <ThemeToggle inSidebar={false} />
-              <NavMenuBtn isOpen={menuOpen} setIsOpen={setMenuOpen} />
-            </div>
-
-            <div className="nav-menu">
-              <div className="nav-menu-inner">
-                {sections.map(({ id }, index) => {
-                  return (
-                    <div
-                      key={id}
-                      className="nav-menu-btn"
-                      onClick={() => {
-                        startScroll();
-                        requestAnimationFrame(() => {
-                          setMenuOpen(false);
-                          scrollTo(`#${id}`);
-                        });
-                      }}
-                      style={{ "--index": index } as React.CSSProperties}
-                    >
-                      {t(id)}
-                    </div>
-                  );
-                })}
+        {isMobileView && (
+          <motion.div
+            initial={{ y: -200 }}
+            animate={{
+              y: 0,
+            }}
+            exit={{ y: -200 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 50,
+              mass: 0.3,
+            }}
+            className="nav-wrapper"
+          >
+            <nav>
+              <div className="logo" onClick={() => scrollIntoView("home")}>
+                {t2("WaseeM")}
               </div>
-            </div>
-          </nav>
-        </motion.div>
+              <div className="top-navigation">
+                {sections.map(({ id }) => (
+                  <div
+                    style={{ height: "fit-content" }}
+                    key={id}
+                    className={currentSection === id ? "selected" : ""}
+                  >
+                    <button
+                      aria-label={t(id)}
+                      className="top-btn"
+                      onClick={() => scrollIntoView(id)}
+                    />
+                  </div>
+                ))}
+                <motion.div style={{ width: width }} className="slider" />
+              </div>
+              <div className="top-settings">
+                <LocaleSwitcher inSidebar={false} />
+                <ThemeToggle inSidebar={false} />
+                <NavMenuBtn isOpen={menuOpen} setIsOpen={setMenuOpen} />
+              </div>
+
+              <div className="nav-menu">
+                <div className="nav-menu-inner">
+                  {sections.map(({ id }, index) => {
+                    return (
+                      <div
+                        key={id}
+                        className="nav-menu-btn"
+                        onClick={() => {
+                          startScroll();
+                          requestAnimationFrame(() => {
+                            setMenuOpen(false);
+                            scrollTo(`#${id}`);
+                          });
+                        }}
+                        style={{ "--index": index } as React.CSSProperties}
+                      >
+                        {t(id)}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );

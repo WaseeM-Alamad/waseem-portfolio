@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import Main from "@/components/Main";
+import TransitionWrapper from "@/components/TransitionWrapper";
 
 export default function Home({
   params,
@@ -10,5 +11,5 @@ export default function Home({
   const { locale } = use(params);
   setRequestLocale(locale);
 
-  return <Main />;
+  return <TransitionWrapper />;
 }

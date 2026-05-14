@@ -1,6 +1,7 @@
 import { MouseEventHandler, ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import "@/styles/outlinedBtn.css";
+import Link from "next/link";
 
 type Props = React.ComponentPropsWithoutRef<"a"> & {
   children?: ReactNode;
@@ -84,8 +85,10 @@ export default function GSAPButton({
     };
   }, []);
 
-  return (
-    <a {...anchorProps}>
+  const { href, ...rest } = anchorProps;
+
+  if (!href) {
+    return (
       <button
         ref={buttonRef}
         onClick={onClick}
@@ -95,6 +98,19 @@ export default function GSAPButton({
         <span ref={flairRef} className="button__flair" />
         <span className="button__label">{children}</span>
       </button>
-    </a>
+    );
+  }
+
+  return (
+    <Link href={href} {...rest}>
+      <span
+        ref={buttonRef}
+        className="button button--stroke border-radius"
+        data-block="button"
+      >
+        <span ref={flairRef} className="button__flair" />
+        <span className="button__label">{children}</span>
+      </span>
+    </Link>
   );
 }

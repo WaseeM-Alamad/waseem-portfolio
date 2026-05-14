@@ -1,30 +1,25 @@
 "use client";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
-import useDetectSection from "@/hooks/useDetectSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LinkedIn from "./icons/LinkedIn";
 import Github from "./icons/Github";
 import { motion } from "framer-motion";
-import { useGlobalContext } from "@/contexts/GlobalContext";
 import Navbar from "./navbar/Navbar";
 import Projects from "./sections/Projects";
+import FloatingCards from "./FloatingCards";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Main = () => {
-  const { isMobileView } = useGlobalContext();
-  const [currentSection, setCurrentSection] = useState<string>("home");
   const [willSlideUnder, SetWillSlideUnder] = useState<boolean>(false);
   const mainRef = useRef<HTMLElement | null>(null);
   const shadowRef = useRef<HTMLDivElement | null>(null);
-
-  useDetectSection({ setCurrentSection });
 
   useLayoutEffect(() => {
     const handler = () => {
@@ -112,8 +107,6 @@ const Main = () => {
 
   return (
     <div>
-      <Sidebar currentSection={currentSection} />
-      <Navbar currentSection={currentSection} />
       <main ref={mainRef}>
         <div
           ref={shadowRef}
@@ -134,6 +127,7 @@ const Main = () => {
             <Home />
           </div>
         </div>
+        <FloatingCards />
 
         {/* Panel 2 — Everything else (last panel, never gets pinned/scaled) */}
         <div className="panel panel-content">

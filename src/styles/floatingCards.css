@@ -1,0 +1,70 @@
+.floating-imgs-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-imgs-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  flex-direction: column;
+  display: flex;
+  visibility: hidden;
+  width: 100%;
+  height: 400vh;
+  overflow: hidden;
+  animation: show 0s linear 1s forwards;
+}
+
+@keyframes show {
+  to {
+    visibility: visible;
+  }
+}
+
+.floating-imgs-layer-inner {
+  position: relative;
+  will-change: transform;
+  width: 100%;
+  height: 200vh;
+  animation: 25s linear infinite scroll;
+  animation-delay: 0.6s;
+}
+
+.floating-imgs-layer img {
+  border-radius: 1rem;
+  position: absolute;
+  animation: fadeUp 1.3s ease;
+  animation-delay: 1s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

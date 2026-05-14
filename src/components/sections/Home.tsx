@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import OutlinedButton from "../buttons/OutlinedButton";
 import { useSmoothScroll } from "@/contexts/SmoothScrollContext";
 import { useGlobalContext } from "@/contexts/GlobalContext";
+import FloatingCards from "../FloatingCards";
 
 const Home = () => {
   const { isAr } = useGlobalContext();
@@ -38,7 +39,7 @@ const Home = () => {
         >
           <div
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 7rem)",
+              fontSize: "clamp(3.5rem, 10vw, 7.5rem)",
               fontWeight: "600",
               textAlign: "center",
               marginBottom: "1.5rem",
@@ -55,7 +56,7 @@ const Home = () => {
             <br />{" "}
             <span
               style={{
-                fontSize: `clamp(${isAr ? " 3.5rem" : "2.8rem"}, 10vw, 7rem)`,
+                fontSize: `clamp(${isAr ? " 3.5rem" : "2.8rem"}, 10vw, 7.5rem)`,
               }}
             >
               {" "}
@@ -112,6 +113,20 @@ const Home = () => {
                 {t("contactMe")}
               </span>
             </OutlinedButton>
+            {/* <OutlinedButton
+              onClick={() => {
+                window.history.pushState(null, "", "notopia");
+              }}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  fontSize: "clamp(1.3rem, 4vw, 2rem)",
+                }}
+              >
+                About
+              </span>
+            </OutlinedButton> */}
           </motion.div>
         </motion.div>
       </motion.div>

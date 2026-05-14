@@ -170,14 +170,14 @@ export default function StackedCards() {
               flex: "1",
             }}
           >
-            <div>
+            <div style={{ marginBottom: "auto" }}>
               {card.list.map((item) => (
                 <div
                   key={item}
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    marginTop: '.4rem',
+                    marginTop: ".4rem",
                     gap: ".8rem",
                   }}
                 >

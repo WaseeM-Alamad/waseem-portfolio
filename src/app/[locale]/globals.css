@@ -6,6 +6,7 @@
 
 ::-webkit-scrollbar {
   width: 0;
+  display: none;
 }
 
 :root {
@@ -438,6 +439,18 @@ textarea {
   gap: 4rem;
   align-items: center;
   margin-top: 3rem;
+}
+
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 @media (max-width: 1660px) {
