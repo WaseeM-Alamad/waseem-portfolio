@@ -7,7 +7,7 @@ const Notopia = () => {
       style={{
         backgroundColor: "lightgreen",
         width: "100%",
-        height: "100dvh",
+        minHeight: "100dvh",
         paddingLeft: "var(--sidebar-width)",
         boxSizing: "border-box",
       }}

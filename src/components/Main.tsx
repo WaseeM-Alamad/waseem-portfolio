@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
 import About from "./sections/About";
@@ -104,6 +104,13 @@ const Main = () => {
 
     return () => ctx.revert();
   }, [mainRef, willSlideUnder]);
+
+  useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("page-transition-complete", refresh);
+    return () =>
+      window.removeEventListener("page-transition-complete", refresh);
+  }, []);
 
   return (
     <div>

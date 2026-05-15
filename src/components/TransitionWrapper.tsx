@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Main from "./Main";
-import Notopia from "./Notopia";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import Main from "./Main";
+import Notopia from "./Notopia";
 import useDetectSection from "@/hooks/useDetectSection";
 import Sidebar from "./sidebar/Sidebar";
 import Navbar from "./navbar/Navbar";
@@ -16,56 +16,83 @@ const getPage = (pathname: string): PageKey => {
   return route === "notopia" ? "Notopia" : "Main";
 };
 
-const TransitionWrapper = () => {
-  const [currentSection, setCurrentSection] = useState<string>("home");
+const variants = {
+  initial: { y: "100%", scale: 0.98, transformOrigin: "50% 50svh" },
+  animate: { y: 0, scale: 1 },
+  exit: { opacity: 0.2, scale: 0.9, transformOrigin: "50% 75rem" },
+};
 
+function lockScroll() {
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.overflow = "hidden";
+  document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
+}
+
+function unlockScroll() {
+  document.documentElement.style.overflow = "";
+  document.documentElement.style.paddingRight = "";
+  window.scrollTo(0, 0);
+}
+
+export default function TransitionWrapper() {
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [currentSection, setCurrentSection] = useState("home");
   useDetectSection({ setCurrentSection });
+
   const pathname = usePathname();
   const [currentPage, setCurrentPage] = useState<PageKey>(() =>
     getPage(pathname),
   );
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const currentPageRef = useRef(currentPage);
 
   useEffect(() => {
-    setCurrentPage(getPage(pathname));
+    const next = getPage(pathname);
+    if (next === currentPageRef.current) return;
+    currentPageRef.current = next;
+
+    lockScroll();
+
+    requestAnimationFrame(() => {
+      setIsFirstRender(false);
+      setIsTransitioning(true);
+      setCurrentPage(next);
+    });
   }, [pathname]);
+
+  const handleEnterComplete = () => {
+    unlockScroll();
+    setIsTransitioning(false);
+    window.dispatchEvent(new CustomEvent("page-transition-complete"));
+  };
 
   const Page = pages[currentPage];
 
   return (
-    <div style={{ position: "relative" }}>
+    <>
       <Sidebar currentSection={currentSection} />
       <Navbar currentSection={currentSection} />
       <AnimatePresence mode="sync">
         <motion.div
           key={currentPage}
+          variants={variants}
+          initial={isFirstRender ? undefined : "initial"}
+          animate="animate"
+          exit="exit"
           style={{
-            position: "absolute",
-            height: "100dvh",
-            inset: "0",
+            ...(isTransitioning
+              ? { position: "fixed", inset: 0 }
+              : { minHeight: "100dvh" }),
           }}
-          // initial={{
-          //   opacity: 1,
-          //   y: "100%",
-          //   scale: 0.95,
-          //   transformOrigin: "50% 50svh",
-          // }}
-          // animate={{ opacity: 1, y: 0, scale: 1 }}
-          // exit={{
-          //   opacity: 0.3,
-          //   y: "10%",
-          //   scale: 0.9,
-          //   transformOrigin: "50% 281.5px",
-          // }}
-          // transition={{
-          //   duration: 0.75,
-          //   ease: [0.5, 0, 0, 1],
-          // }}
+          transition={{ duration: 0.75, ease: [0.5, 0, 0, 1] }}
+          onAnimationComplete={(def) => {
+            if (def === "animate") handleEnterComplete();
+          }}
         >
           <Page />
         </motion.div>
       </AnimatePresence>
-    </div>
+    </>
   );
-};
-
-export default TransitionWrapper;
+}
