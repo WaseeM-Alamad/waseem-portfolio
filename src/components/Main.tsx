@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Sidebar from "./sidebar/Sidebar";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
@@ -10,7 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LinkedIn from "./icons/LinkedIn";
 import Github from "./icons/Github";
 import { motion } from "framer-motion";
-import Navbar from "./navbar/Navbar";
 import Projects from "./sections/Projects";
 import FloatingCards from "./FloatingCards";
 
@@ -61,7 +59,7 @@ const Main = () => {
             shadowRef.current,
             { opacity: 0 },
             {
-              opacity: 0.3,
+              opacity: 0.5,
               ease: "none",
               scrollTrigger: {
                 trigger: ".panel-home",
@@ -97,7 +95,7 @@ const Main = () => {
         tl.fromTo(
           panel,
           { scale: 1, opacity: 1 },
-          { scale: 0.8, opacity: 0.5, duration: 0.9 },
+          { scale: 0.75, opacity: 0.5, duration: 0.9 },
         ).to(panel, { opacity: 0.3, duration: 0.1 });
       });
     }, mainRef);

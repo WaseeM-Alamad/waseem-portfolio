@@ -7,6 +7,7 @@ import Notopia from "./Notopia";
 import useDetectSection from "@/hooks/useDetectSection";
 import Sidebar from "./sidebar/Sidebar";
 import Navbar from "./navbar/Navbar";
+import SplashScreen from "./SplashScreen";
 
 const pages = { Main, Notopia } as const;
 type PageKey = keyof typeof pages;
@@ -36,7 +37,6 @@ function unlockScroll() {
 }
 
 export default function TransitionWrapper() {
-  const [isFirstRender, setIsFirstRender] = useState(true);
   const [currentSection, setCurrentSection] = useState("home");
   useDetectSection({ setCurrentSection });
 
@@ -55,7 +55,6 @@ export default function TransitionWrapper() {
     lockScroll();
 
     requestAnimationFrame(() => {
-      setIsFirstRender(false);
       setIsTransitioning(true);
       setCurrentPage(next);
     });
@@ -71,13 +70,14 @@ export default function TransitionWrapper() {
 
   return (
     <>
+      <SplashScreen />
       <Sidebar currentSection={currentSection} />
       <Navbar currentSection={currentSection} />
       <AnimatePresence mode="sync">
         <motion.div
           key={currentPage}
           variants={variants}
-          initial={isFirstRender ? undefined : "initial"}
+          initial="initial"
           animate="animate"
           exit="exit"
           style={{

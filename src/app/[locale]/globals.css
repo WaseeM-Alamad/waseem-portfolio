@@ -57,7 +57,7 @@
 }
 
 [data-section="default"] {
-  --color-bg: #e9f2f5;
+  --color-bg: #e4ecf5;
   --color-primary: #2093ff;
 }
 
@@ -94,6 +94,10 @@ html[mobile-menu-open="1"] {
   overflow: hidden !important;
 }
 
+html[data-splash-playing="1"] {
+  overflow: hidden !important;
+}
+
 html[lang="ar"] * {
   direction: right;
   text-align: right;
@@ -118,6 +122,10 @@ button,
 a,
 div {
   -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
 }
 
 .border-radius-btn {
@@ -538,4 +546,13 @@ textarea {
   .skill-point {
     white-space: unset;
   }
+}
+
+
+.testt::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%5C%0A%3Cfilter id='n'%3E%5C%0A%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%5C%0A%3C/filter%3E%5C%0A%3Crect width='120' height='120' filter='url(%23n)' opacity='0.4'/%3E%5C%0A%3C/svg%3E");
+  opacity: .6;
 }

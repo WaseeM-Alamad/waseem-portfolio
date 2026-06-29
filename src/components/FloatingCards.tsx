@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import "@/styles/floatingCards.css";
+import { useGlobalContext } from "@/contexts/GlobalContext";
 
 const FloatingCards = () => {
+  const { isSplashPlaying } = useGlobalContext();
+
+  if (isSplashPlaying) return;
+  
   return (
     <div className="floating-imgs-container">
       <div className="floating-imgs-layer">
@@ -16,7 +21,7 @@ const FloatingCards = () => {
                 left: "8%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a1/300/200"
+              src="https://picsum.photos/300/201"
             />
             <img
               alt=""
@@ -26,7 +31,7 @@ const FloatingCards = () => {
                 left: "3%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a2/300/200"
+              src="https://picsum.photos/300/202"
             />
             <img
               alt=""
@@ -36,7 +41,7 @@ const FloatingCards = () => {
                 left: "38%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a3/300/200"
+              src="https://picsum.photos/300/203"
             />
             <img
               alt=""
@@ -46,7 +51,7 @@ const FloatingCards = () => {
                 left: "25%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a4/300/200"
+              src="https://picsum.photos/300/204"
             />
             <img
               alt=""
@@ -56,7 +61,7 @@ const FloatingCards = () => {
                 right: "5%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a5/300/200"
+              src="https://picsum.photos/300/205"
             />
             <img
               alt=""
@@ -66,7 +71,7 @@ const FloatingCards = () => {
                 right: "20%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a6/300/200"
+              src="https://picsum.photos/300/206"
             />
             <img
               alt=""
@@ -76,7 +81,7 @@ const FloatingCards = () => {
                 left: "32%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a7/300/200"
+              src="https://picsum.photos/300/207"
             />
             <img
               alt=""
@@ -86,7 +91,7 @@ const FloatingCards = () => {
                 right: "8%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a8/300/200"
+              src="https://picsum.photos/300/208"
             />
             <img
               alt=""
@@ -96,7 +101,7 @@ const FloatingCards = () => {
                 right: "35%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a9/300/200"
+              src="https://picsum.photos/300/209"
             />
             <img
               alt=""
@@ -106,7 +111,7 @@ const FloatingCards = () => {
                 left: "22%",
                 position: "absolute",
               }}
-              src="https://picsum.photos/seed/a10/300/200"
+              src="https://picsum.photos/300/210"
             />
           </div>
         ))}

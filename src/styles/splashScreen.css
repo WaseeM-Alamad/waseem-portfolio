@@ -1,0 +1,16 @@
+.splash-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: calc(100dvh + 3.5rem);
+  width: 100%;
+  background-color: var(--color-bg);
+  z-index: 10000000;
+  border-bottom-left-radius: clamp(0rem, 2vw, 1.5rem);
+  border-bottom-right-radius: clamp(0rem, 2vw, 1.5rem);
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+}

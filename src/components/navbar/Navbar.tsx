@@ -17,7 +17,7 @@ import { useGlobalContext } from "@/contexts/GlobalContext";
 import NavMenuBtn from "./NavMenuBtn";
 
 const Navbar = ({ currentSection }: { currentSection: string }) => {
-  const { isMobileView } = useGlobalContext();
+  const { isMobileView, isSplashPlaying } = useGlobalContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("sidebar");
   const t2 = useTranslations("home");
@@ -60,6 +60,8 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
       document.documentElement.setAttribute("mobile-menu-open", "0");
     }
   }, [menuOpen, startScroll, stopScroll]);
+
+  if (isSplashPlaying) return;
 
   return (
     <>

@@ -7,7 +7,7 @@ const Projects = () => {
       <div>My projects :)</div>
       <div className="projects-container">
         <ProjectCard />
-        <ProjectCard />
+        {/* <ProjectCard /> */}
       </div>
     </section>
   );

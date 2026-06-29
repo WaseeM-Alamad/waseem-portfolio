@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import LocomotiveScroll from "locomotive-scroll";
 import { createContext, useContext, useEffect, useRef, ReactNode } from "react";
+import { useGlobalContext } from "./GlobalContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,11 +37,13 @@ interface SmoothScrollProviderProps {
 }
 
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+  const { isSplashPlaying } = useGlobalContext();
   const scrollRef = useRef<HTMLDivElement>(null);
   const locomotiveScrollRef = useRef<LocomotiveScroll>(null);
 
   useEffect(() => {
     const initScroll = async () => {
+      if (isSplashPlaying) return;
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
       locomotiveScrollRef.current = new LocomotiveScroll({
@@ -55,12 +58,13 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
         },
       });
 
-      // Add this ↓
+      locomotiveScrollRef.current.lenisInstance?.stop();
+
       const lenis = locomotiveScrollRef.current?.lenisInstance;
       if (lenis) {
         lenis.on("scroll", ScrollTrigger.update);
-        gsap.ticker.add((time) => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
+        // gsap.ticker.add((time) => lenis.raf(time * 1000));
+        // gsap.ticker.lagSmoothing(0);
       }
     };
 
@@ -69,10 +73,10 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     return () => {
       locomotiveScrollRef.current?.destroy();
       gsap.ticker.remove((time) =>
-        locomotiveScrollRef.current?.lenisInstance?.raf(time * 1000)
+        locomotiveScrollRef.current?.lenisInstance?.raf(time * 1000),
       );
     };
-  }, []);
+  }, [isSplashPlaying]);
 
   const scrollTo = (
     target: string | HTMLElement | number,

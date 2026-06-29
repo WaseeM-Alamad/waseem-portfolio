@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import "@/styles/projectCard.css";
 import { ExternalLink } from "lucide-react";
@@ -11,10 +12,22 @@ const ProjectCard = () => {
     >
       <div className="project-card-bg" />
       <div className="project-card">
-        <img
-          className="project-card-img"
-          src="https://picsum.photos/2023/300"
-        />
+        <div style={{ display: "flex", position: "relative" }}>
+          <video
+            className="project-card-vid"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            src="https://res.cloudinary.com/dme5ojqcr/video/upload/v1782376822/notopia_demo_alyxvy.mp4"
+          />
+          <img
+            className="project-card-logo"
+            src="https://media.discordapp.net/attachments/1099998106227060789/1517049658780815470/image.png?ex=6a34de18&is=6a338c98&hm=8b39c53df3e460358d382d6da9799bcea132f6633a4436a769c20fa6ae338c98&=&format=webp&quality=lossless"
+            alt="project-logo"
+          />
+        </div>
         <div className="project-card-content">
           <div className="project-card-title">
             <div className="project-card-color" />
@@ -29,14 +42,24 @@ const ProjectCard = () => {
             <div style={{ fontSize: ".8rem", marginInlineEnd: "auto" }}>
               Apr 4th, 2024
             </div>
-            <div className="project-card-btn">
+            <a
+              onClick={(e) => e.stopPropagation()}
+              href="https://github.com/WaseeM-Alamad/notopia"
+              target="_blank"
+              className="project-card-btn proj-github-btn"
+            >
               <Github size={17} />
               {/* <span>Github</span> */}
-            </div>
-            <div className="project-card-btn">
+            </a>
+            <a
+              onClick={(e) => e.stopPropagation()}
+              href="https://www.notopia.app/"
+              target="_blank"
+              className="project-card-btn"
+            >
               <ExternalLink size={17} />
               <span>Visit</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>

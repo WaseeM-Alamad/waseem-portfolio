@@ -14,7 +14,7 @@ import { useSmoothScroll } from "../../contexts/SmoothScrollContext";
 import { useGlobalContext } from "@/contexts/GlobalContext";
 
 const Sidebar = ({ currentSection }: { currentSection: string }) => {
-  const { isMobileView, isAr } = useGlobalContext();
+  const { isMobileView, isAr, isSplashPlaying } = useGlobalContext();
   const t = useTranslations("sidebar");
 
   const { scrollYProgress } = useScroll();
@@ -33,7 +33,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
 
   return (
     <AnimatePresence>
-      <motion.div
+      { !isSplashPlaying && <motion.div
         initial={{ x: xVal }}
         animate={{
           x: isMobileView ? xVal : 0,
@@ -97,7 +97,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
             </div> */}
           </div>
         </aside>
-      </motion.div>
+      </motion.div>}
     </AnimatePresence>
   );
 };

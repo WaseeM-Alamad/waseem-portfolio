@@ -8,11 +8,13 @@ import { useGlobalContext } from "@/contexts/GlobalContext";
 import FloatingCards from "../FloatingCards";
 
 const Home = () => {
-  const { isAr } = useGlobalContext();
+  const { isAr, isSplashPlaying } = useGlobalContext();
   const t = useTranslations("home");
   const { scrollTo } = useSmoothScroll();
 
   const ref = useRef<HTMLElement | null>(null);
+
+  if (isSplashPlaying) return;
 
   return (
     <motion.section ref={ref} className="home" id="home">
