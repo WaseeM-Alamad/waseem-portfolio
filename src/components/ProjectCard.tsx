@@ -24,7 +24,7 @@ const ProjectCard = () => {
           />
           <img
             className="project-card-logo"
-            src="https://media.discordapp.net/attachments/1099998106227060789/1517049658780815470/image.png?ex=6a34de18&is=6a338c98&hm=8b39c53df3e460358d382d6da9799bcea132f6633a4436a769c20fa6ae338c98&=&format=webp&quality=lossless"
+            src="/notopia_logo.png"
             alt="project-logo"
           />
         </div>
