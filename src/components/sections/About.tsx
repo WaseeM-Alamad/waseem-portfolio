@@ -32,7 +32,7 @@ const About = () => {
         }}
         style={{
           marginBottom: "1.5rem",
-          fontSize: "clamp(2.2rem, 9vw, 4.5rem)",
+          fontSize: "clamp(2.2rem, 7vw, 4.5rem)",
         }}
       >
         {t("waseemAlamad")}

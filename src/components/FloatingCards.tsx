@@ -7,6 +7,8 @@ const FloatingCards = () => {
   const { isSplashPlaying } = useGlobalContext();
 
   if (isSplashPlaying) return;
+
+  return;
   
   return (
     <div className="floating-imgs-container">

@@ -20,7 +20,7 @@ export default function WaveAnimation({
   const [tileCount, setTileCount] = useState(20);
   const locale = useLocale();
 
-  const scale = Math.min(120, fontSize) / 16;
+  const scale = Math.min(120, fontSize) / 15;
   const WAVE_WIDTH = Math.round(20 * scale);
   const WAVE_HEIGHT = Math.round(7 * scale);
   const STROKE_WIDTH = Math.round(3.5 * scale);

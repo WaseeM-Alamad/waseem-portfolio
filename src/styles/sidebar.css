@@ -18,7 +18,7 @@ aside {
   padding: 1rem 0.5rem;
   padding-top: 1.3rem;
   background: #111111;
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   box-sizing: border-box;
   user-select: none;
 }
@@ -54,7 +54,7 @@ aside {
   font-size: 0.9rem;
   /* background-color: red; */
   /* border: solid 1px; */
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   /* border-radius: 0.8rem; */
   cursor: pointer;
   padding: 0.7rem 0.4rem;
@@ -88,7 +88,7 @@ aside {
   width: fit-content;
 
   padding: 0.5rem 0.6rem;
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   cursor: pointer;
   border: 1px solid var(--color-border);
   user-select: none;

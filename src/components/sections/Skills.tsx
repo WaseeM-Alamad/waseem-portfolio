@@ -18,63 +18,36 @@ export default function StackedCards() {
 
   const cardsData = [
     {
-      id: 1,
+      id: "fe",
       title: t("frontendEngineering"),
       image: "/frontend.svg",
       color: "#ff705c",
       icon: LayoutGrid,
-      list: [
-        "React, Next.js",
-        "Custom masonry layouts",
-        "Drag-and-drop interactions",
-        "State management & rendering control",
-        "Performance optimization",
-        "Responsive UI systems",
-      ],
+      list: 6,
     },
     {
-      id: 2,
+      id: "be",
       title: t("backendAndData"),
       image: "/backend.svg",
       color: "#8ed462",
       icon: Database,
-      list: [
-        "Node.js & REST APIs",
-        "MongoDB schema design",
-        "Supabase (Auth, Storage, Realtime)",
-        "Secure data flows",
-        "Optimized queries & indexing",
-        "Scalable backend architecture",
-      ],
+      list: 6,
     },
     {
-      id: 3,
+      id: "md",
       title: t("mobiledevelopment"),
       image: "/mobile.svg",
       color: "#ebc1ff",
       icon: Smartphone,
-      list: [
-        "Flutter cross-platform apps",
-        "Mobile UI & layout systems",
-        "Local state & cart management",
-        "API integration",
-        "Performance-conscious mobile builds",
-      ],
+      list: 5,
     },
     {
-      id: 4,
+      id: "ep",
       title: t("engineeringprinciples"),
       image: "/engineering.svg",
       color: "#f5e211",
       icon: Shapes,
-      list: [
-        "Clean architecture",
-        "Modular & scalable systems",
-        "Predictable data flow",
-        "Maintainable codebases",
-        "User-focused interaction design",
-        "Performance-first mindset",
-      ],
+      list: 6,
     },
   ];
 
@@ -89,7 +62,7 @@ export default function StackedCards() {
 
       const lastCardST = ScrollTrigger.create({
         trigger: cards[cards.length - 1],
-        start: "center center",
+        start: `top-=${cards.length * GAP} top`,
       });
 
       cards.forEach((card, index) => {
@@ -171,32 +144,35 @@ export default function StackedCards() {
             }}
           >
             <div style={{ marginBottom: "auto" }}>
-              {card.list.map((item) => (
-                <div
-                  key={item}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: ".4rem",
-                    gap: ".8rem",
-                  }}
-                >
-                  <svg
-                    style={{ flexShrink: 0 }}
-                    width="10"
-                    height="10"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+              {Array.from({ length: card.list }).map((_, i) => {
+                const text = t(`${card.id}_${i + 1}`);
+                return (
+                  <div
+                    key={text}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: ".4rem",
+                      gap: ".8rem",
+                    }}
                   >
-                    <path
-                      d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20Z"
-                      fill={card.color}
-                    />
-                  </svg>
-                  <span className="skill-point">{item}</span>
-                </div>
-              ))}
+                    <svg
+                      style={{ flexShrink: 0 }}
+                      width="10"
+                      height="10"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20Z"
+                        fill={card.color}
+                      />
+                    </svg>
+                    <span className="skill-point">{text}</span>
+                  </div>
+                );
+              })}
             </div>
             <Image
               className={`skill-img ${card.image.includes("frontend") ? undefined : "lang-flip"}`}

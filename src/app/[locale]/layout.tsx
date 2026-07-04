@@ -7,6 +7,8 @@ import { setRequestLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import { SmoothScrollProvider } from "@/contexts/SmoothScrollContext";
 import { GlobalProvider } from "@/contexts/GlobalContext";
+import { DialogProvider } from "@/contexts/DialogContext";
+import { Inter } from "next/font/google";
 
 const hilmar = localFont({
   src: [
@@ -27,6 +29,13 @@ const hilmar = localFont({
     },
   ],
   variable: "--font-hilmar",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -67,10 +76,15 @@ export default async function RootLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
       data-section="default"
     >
-      <body suppressHydrationWarning className={hilmar.variable}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.variable} ${hilmar.variable}`}
+      >
         <NextIntlClientProvider>
           <GlobalProvider>
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+            <SmoothScrollProvider>
+              <DialogProvider>{children}</DialogProvider>
+            </SmoothScrollProvider>
           </GlobalProvider>
         </NextIntlClientProvider>
       </body>

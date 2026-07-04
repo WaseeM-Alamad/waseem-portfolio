@@ -22,12 +22,27 @@
   transition: all 0.4s cubic-bezier(0.17, 0.67, 0.3, 1.33);
 }
 
-.form-btn:hover .form-btn-text {
-  transform: translateY(-50%) translateX(3rem);
+.arrow-btn-loader {
+  --color-1: #2093ff;
+  --size: 1px;
+  width: 100%;
+  height: 100%;
+  border: calc(4 * var(--size)) solid var(--color-1);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease;
+  animation: rotation 1s linear infinite;
 }
 
-html[lang="ar"] .form-btn:hover .form-btn-text {
-  transform: translateY(-50%) translateX(-3rem);
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-circle {
@@ -68,20 +83,34 @@ html[lang="ar"] .form-btn:hover .form-btn-text {
     opacity 0.2s ease-in-out;
 }
 
+.arrow-icon {
+  position: absolute;
+}
+
 html[lang="ar"] .arrow-icon {
   transform: scaleX(-1);
 }
 
-.form-btn:hover {
-  transform: scale(1.05);
-}
+@media (hover: hover) {
+  .form-btn:hover {
+    transform: scale(1.05);
+  }
 
-.form-btn:hover .btn-circle {
-  transform: translateY(-50%) scale(0);
-  opacity: 0;
-}
+  .form-btn:hover .btn-circle {
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+  }
 
-.form-btn:hover .btn-circle-hover {
-  transform: translateY(-50%) scale(1);
-  opacity: 1;
+  .form-btn:hover .btn-circle-hover {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+
+  .form-btn:hover .form-btn-text {
+    transform: translateY(-50%) translateX(3rem);
+  }
+
+  html[lang="ar"] .form-btn:hover .form-btn-text {
+    transform: translateY(-50%) translateX(-3rem);
+  }
 }
