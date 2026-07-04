@@ -62,7 +62,7 @@ const Projects = () => {
       github: "https://github.com/ZeenaQa/Caterfy",
       logo: "/caterfy_logo.png",
       image:
-        "https://media.discordapp.net/attachments/1099998106227060789/1522192542664229077/MixCollage-02-Jul-2026-01-46-PM-2553.jpg?ex=6a4793c7&is=6a464247&hm=2c211c20c3f5f2eafdef4227d50837ecbc81959effda506ff019283cd837ae35&=&format=webp&width=953&height=960",
+        "/caterfy_preview.png",
     },
   ];
   return (
