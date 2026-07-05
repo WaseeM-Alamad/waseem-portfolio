@@ -107,6 +107,10 @@ a {
   border-radius: 0.6rem;
 }
 
+.lang-flip {
+  transform: none;
+}
+
 html[lang="ar"] .lang-flip {
   transform: scaleX(-1);
 }
@@ -482,11 +486,11 @@ textarea {
 .projects-container {
   display: flex;
   gap: 1.5rem;
-  /* overflow-x: auto; */
+  overflow-x: auto;
   padding-inline: calc(
     var(--sidebar-width) + clamp(0.5rem, 7vw, 5rem)
   ) !important;
-  padding-inline-end: 5rem !important;
+  padding-inline-end: clamp(0.5rem, 7vw, 5rem) !important;
 }
 
 @media (max-width: 1660px) {
