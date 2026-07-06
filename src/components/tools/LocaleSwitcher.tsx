@@ -26,7 +26,7 @@ export default function LocaleSwitcher({
         }}
       >
         {inSidebar && <Globe size={15} />}
-        <div>{locale === "en" ? "AR" : "EN"}</div>
+        <div style={{fontFamily: "var(--font-hilmar)"}}>{locale === "en" ? inSidebar? "Arabic" : "AR" : inSidebar? "English" : "EN"}</div>
       </div>
   );
 }

@@ -12,29 +12,26 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const t = useTranslations("projects");
+
+  const openLink = () => {
+    window.open(project.github, "_blank", "noopener,noreferrer");
+  };
   return (
-    <div
-      className="project-card-wrapper"
-      onClick={() => window.history.pushState(null, "", "notopia")}
-    >
+    <div className="project-card-wrapper" onClick={openLink}>
       <div className="project-card">
         <div style={{ display: "flex", position: "relative" }}>
           <div className="project-card-media-placeholder" />
-            <img
-              className="project-card-media"
-              alt=""
-              src={project.image}
-            />
-            <video
-              className="project-card-media"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              src={project.video}
-              style={{zIndex: 2}}
-            />
+          <img className="project-card-media" alt="" src={project.image} />
+          <video
+            className="project-card-media"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            src={project.video}
+            style={{ zIndex: 2 }}
+          />
           <img
             className="project-card-logo"
             src={project.logo}

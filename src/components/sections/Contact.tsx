@@ -285,7 +285,6 @@ const Contact = () => {
             flexDirection: "column",
             margin: "auto 0",
             paddingBottom: "0rem",
-            maxWidth: "50%",
           }}
         >
           <div

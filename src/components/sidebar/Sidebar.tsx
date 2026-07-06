@@ -51,7 +51,7 @@ const Sidebar = ({ currentSection }: { currentSection: string }) => {
           <div className="side-logo">waseem</div>
           <div className="top-settings">
             <LocaleSwitcher />
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
           </div>
           <div
             id="general-label"

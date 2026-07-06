@@ -130,8 +130,8 @@ const Projects = () => {
     <section id="projects">
       <div>
         <div className="projects-controls-wrapper">
-          <div className="projects-controls-title">Things I've built</div>
-          <div style={{ display: "flex", gap: ".5rem" }}>
+          {/* <div className="projects-controls-title">Things I've built</div> */}
+          <div style={{ display: "flex", gap: ".5rem", marginInlineStart: "auto" }}>
             <ControlButton onClick={() => scrollToProject(true)} />
             <ControlButton onClick={() => scrollToProject()} isFlipped={true} />
           </div>

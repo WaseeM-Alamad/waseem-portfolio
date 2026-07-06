@@ -31,7 +31,7 @@ interface GlobalProviderProps {
 
 export function GlobalProvider({ children }: GlobalProviderProps) {
   const [isMobileView, setIsMobileView] = useState(false);
-  const [isSplashPlaying, setIsSplashPlaying] = useState(true);
+  const [isSplashPlaying, setIsSplashPlaying] = useState(false);
   const locale = useLocale();
   const isAr = locale === "ar";
 

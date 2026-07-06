@@ -24,6 +24,7 @@ aside {
 }
 
 .side-logo {
+  font-family: var(--font-hilmar) !important;
   font-size: 1.5rem;
   margin-bottom: 1.2rem;
   font-weight: 600;
