@@ -104,7 +104,7 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
               </div>
               <div className="top-settings">
                 <LocaleSwitcher inSidebar={false} />
-                <ThemeToggle inSidebar={false} />
+                {/* <ThemeToggle inSidebar={false} /> */}
                 <NavMenuBtn isOpen={menuOpen} setIsOpen={setMenuOpen} />
               </div>
 
