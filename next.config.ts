@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-    domains: ["picsum.photos"],
+    domains: ["picsum.photos", "images.unsplash.com"],
   },
 };
 

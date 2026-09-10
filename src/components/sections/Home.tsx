@@ -18,6 +18,19 @@ const Home = () => {
 
   return (
     <motion.section ref={ref} className="home" id="home">
+      <span
+        style={{
+          position: "absolute",
+          top: "0",
+          insetInlineEnd: "2rem",
+          marginTop: "1rem",
+          textAlign: "center",
+          fontSize: "1rem",
+          fontWeight: "500",
+        }}
+      >
+        ({t("unfinished")})
+      </span>
       <motion.div
         style={{
           position: "relative",

@@ -79,7 +79,7 @@ const About = () => {
         <motion.div style={{ y, rotate }}>
           <Image
             className="about-img"
-            src="https://picsum.photos/500/703"
+            src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
             width={500}
             height={700}
