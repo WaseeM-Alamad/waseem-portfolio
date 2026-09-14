@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
-// Register the plugin
 gsap.registerPlugin(MorphSVGPlugin);
 
 export default function MorphingShapes() {
@@ -10,7 +9,6 @@ export default function MorphingShapes() {
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
-    // Create the morphing animation timeline
     timelineRef.current = gsap
       .timeline({
         defaults: { duration: 2, ease: "expo.inOut" },
@@ -25,7 +23,6 @@ export default function MorphingShapes() {
       .to(morphRef.current, { morphSVG: "#bulb" })
       .to(morphRef.current, { morphSVG: "#morph" });
 
-    // Cleanup on unmount
     return () => {
       if (timelineRef.current) {
         timelineRef.current.kill();

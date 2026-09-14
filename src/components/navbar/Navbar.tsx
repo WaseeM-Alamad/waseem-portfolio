@@ -10,7 +10,6 @@ import {
   AnimatePresence,
   motion,
   useScroll,
-  useTransform,
 } from "framer-motion";
 import { useSmoothScroll } from "@/contexts/SmoothScrollContext";
 import { useGlobalContext } from "@/contexts/GlobalContext";
@@ -22,10 +21,8 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
   const t = useTranslations("sidebar");
   const t2 = useTranslations("home");
 
-  const { scrollYProgress } = useScroll();
   const { scrollTo, startScroll, stopScroll } = useSmoothScroll();
 
-  const width = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const scrollIntoView = (id: string) => {
     if (id === "home") {
@@ -100,7 +97,7 @@ const Navbar = ({ currentSection }: { currentSection: string }) => {
                     />
                   </div>
                 ))}
-                <motion.div style={{ width: width }} className="slider" />
+                <motion.div className="slider" />
               </div>
               <div className="top-settings">
                 <LocaleSwitcher inSidebar={false} />

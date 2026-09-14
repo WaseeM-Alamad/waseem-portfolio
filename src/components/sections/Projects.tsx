@@ -4,6 +4,8 @@ import { Project } from "@/types/types";
 import { useTranslations } from "next-intl";
 import { useGlobalContext } from "@/contexts/GlobalContext";
 import { CustomEase, gsap } from "gsap/all";
+import { motion } from "framer-motion";
+import ProjectsHeading from "../ProjectsHeading";
 
 gsap.registerPlugin(CustomEase);
 
@@ -128,10 +130,18 @@ const Projects = () => {
 
   return (
     <section id="projects">
+      {/* Full-width scroll message; must not sit inside the controls row or it shrinks to the text width. */}
+      <ProjectsHeading words={t("heading").split(" ")} rtl={isAr} />
       <div>
         <div className="projects-controls-wrapper">
           {/* <div className="projects-controls-title">Things I've built</div> */}
-          <div style={{ display: "flex", gap: ".5rem", marginInlineStart: "auto" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: ".5rem",
+              marginInlineStart: "auto",
+            }}
+          >
             <ControlButton onClick={() => scrollToProject(true)} />
             <ControlButton onClick={() => scrollToProject()} isFlipped={true} />
           </div>

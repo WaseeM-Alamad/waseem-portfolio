@@ -18,24 +18,10 @@ const Home = () => {
 
   return (
     <motion.section ref={ref} className="home" id="home">
-      <span
-        style={{
-          position: "absolute",
-          top: "0",
-          insetInlineEnd: "2rem",
-          marginTop: "1rem",
-          textAlign: "center",
-          fontSize: "1rem",
-          fontWeight: "500",
-        }}
-      >
-        ({t("unfinished")})
-      </span>
+      <span className="home-status">({t("unfinished")})</span>
       <motion.div
         style={{
           position: "relative",
-          // opacity,
-          // scale,
         }}
       >
         <motion.div
@@ -63,7 +49,6 @@ const Home = () => {
             }}
           >
             <span style={{ position: "relative" }}>
-              {/* <AnimatedBurst size={130} delay={0.52} /> */}
               {t("crafting")}
             </span>
             <br />
@@ -88,9 +73,7 @@ const Home = () => {
               ease: [0.55, 0, 0.15, 1],
             }}
             style={{
-              // whiteSpace: "pre-line",
               textAlign: "center",
-              // fontSize: "1.6rem",
               fontSize: "clamp(1.1rem, 3vw, 1.6rem)",
               fontWeight: "600",
               maxWidth: "50rem",
@@ -128,20 +111,6 @@ const Home = () => {
                 {t("contactMe")}
               </span>
             </OutlinedButton>
-            {/* <OutlinedButton
-              onClick={() => {
-                window.history.pushState(null, "", "notopia");
-              }}
-            >
-              <span
-                style={{
-                  display: "flex",
-                  fontSize: "clamp(1.3rem, 4vw, 2rem)",
-                }}
-              >
-                About
-              </span>
-            </OutlinedButton> */}
           </motion.div>
         </motion.div>
       </motion.div>

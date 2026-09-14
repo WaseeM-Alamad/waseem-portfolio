@@ -10,7 +10,6 @@ const Test = () => {
         height: "100dvh",
         fontSize: "6rem",
         paddingLeft: "var(--sidebar-width)",
-        // marginLeft: "4rem",
       }}
       
       initial={{ backgroundColor: "#b2d1ff" }}

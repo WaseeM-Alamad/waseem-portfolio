@@ -38,7 +38,6 @@ const Main = () => {
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>(".panel");
 
-      // all panels except the last one get the pin + scale-out treatment
       panels.slice(0, -1).forEach((panel) => {
         const inner = panel.querySelector<HTMLElement>(".panel-inner");
         if (!inner) return;
@@ -126,7 +125,6 @@ const Main = () => {
             background: "rgba(0,0,0,1)",
           }}
         />
-        {/* Panel 1 — Home */}
         <div className="panel panel-home">
           <div className="panel-inner">
             <Home />
@@ -134,7 +132,6 @@ const Main = () => {
         </div>
         <FloatingCards />
 
-        {/* Panel 2 — Everything else (last panel, never gets pinned/scaled) */}
         <div className="panel panel-content">
           <motion.div
             initial={{ transform: "translate(6rem ,-100%)", opacity: 0 }}
@@ -167,8 +164,6 @@ const Main = () => {
             <Skills />
             <Projects />
             <Contact />
-            {/* <Notopia /> */}
-            {/* <Caterfy /> */}
           </div>
         </div>
       </main>

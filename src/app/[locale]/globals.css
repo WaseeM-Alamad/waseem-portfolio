@@ -117,8 +117,9 @@ html[lang="ar"] .lang-flip {
 
 main {
   background: var(--color-primary);
-  overflow: hidden;
-  overflow-y: hidden;
+  /* `clip` instead of `hidden`: same clipping, but it doesn't turn <main> into a scroll
+     container, which would stop position: sticky (the projects scroll message) from pinning. */
+  overflow: clip;
   transition: all 0.5s ease;
 }
 
@@ -172,6 +173,22 @@ section > * {
 .home *::selection {
   background-color: var(--color-bg);
   color: var(--color-primary);
+}
+
+.home-status {
+  position: absolute;
+  top: 0;
+  inset-inline-end: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1114px) {
+  .home-status {
+    top: calc(var(--navbar-height) + 1.5rem);
+  }
 }
 
 .home-btns {
@@ -280,7 +297,7 @@ section > * {
   margin-bottom: 50px;
   font-size: 1.5rem;
   transition-property: border, background-color;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   transition-timing-function: ease;
 }
 
@@ -446,6 +463,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
   padding-inline: calc(var(--sidebar-width) + clamp(0.5rem, 7vw, 5rem))
     clamp(0.5rem, 7vw, 5rem) !important;
   margin-bottom: 3rem;
@@ -622,4 +640,82 @@ textarea {
   .control-btn:hover .control-btn-bg-secondary {
     transform: scale(1);
   }
+}
+
+
+/* The section is taller than the screen; the stage pins while you scroll through it. */
+.scroll-message {
+  position: relative;
+  height: var(--scroll-length, 300vh);
+  /* Clip sideways only: no horizontal scrollbar, shapes are never cut vertically.
+     `clip` (unlike `hidden`) doesn't break position: sticky. */
+  overflow-x: clip;
+}
+
+.scroll-message--static {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.scroll-message__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  /* Center the text in the space next to the sidebar, like the other sections. */
+  padding-inline-start: var(--sidebar-width);
+  box-sizing: border-box;
+}
+
+/* Message */
+
+.scroll-message__text {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  display: flex;
+  gap: 0.25em;
+  margin: 0;
+  font-size: clamp(3.5rem, 15vw, 16rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+/* The line each word rises from. The padding (cancelled out by the negative margins, so the
+   layout doesn't change) gives tall letters and descenders room, and the gradient softens the
+   bottom edge instead of cutting hard. */
+/* Letter spacing pulls joined Arabic letters apart. */
+.scroll-message--rtl .scroll-message__text {
+  letter-spacing: normal;
+}
+
+.scroll-message__word {
+  display: inline-block;
+}
+
+/* Floating shapes */
+
+.scroll-message__shape {
+  position: absolute;
+  top: 0;
+  left: var(--shape-x);
+  z-index: 0;
+  width: calc(clamp(120px, 20vw, 300px) * var(--shape-size, 1));
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.scroll-message__shape--front {
+  z-index: 2;
+}
+
+.scroll-message__shape-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }

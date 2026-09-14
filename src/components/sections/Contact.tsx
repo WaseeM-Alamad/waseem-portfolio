@@ -300,7 +300,6 @@ const Contact = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{
-                // delay: 0.1,
                 duration: 1.3,
                 ease: [0.55, 0, 0.15, 1],
               }}
@@ -334,7 +333,6 @@ const Contact = () => {
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                  // delay: 0.1,
                   duration: 1.2,
                   ease: [0.55, 0.6, 0.15, 1],
                 }}
@@ -417,9 +415,6 @@ const Contact = () => {
                 <Github size={31} /> <span>Github</span>
               </div>
             </OutlinedButton>
-            {/* <RoundButton> <ArrowBigDown/> </RoundButton> */}
-            {/* <RoundButton /> */}
-            {/* <RoundButton /> */}
           </motion.div>
         </div>
         <div className="bg-img">

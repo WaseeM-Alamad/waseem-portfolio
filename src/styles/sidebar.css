@@ -123,6 +123,18 @@ aside {
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
+  animation: solidify-sidebar linear both;
+  animation-timeline: scroll(root block);
+  animation-range: 0;
+}
+
+@keyframes solidify-sidebar {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
 }
 
 .selected-label {
