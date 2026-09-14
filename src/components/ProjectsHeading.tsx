@@ -45,7 +45,7 @@ const INK = "#262626";
 const SHAPES: FloatingShape[] = [
   { kind: "circle", x: 14, from: 80, to: -80, rotate: -8, size: 1.1, color: "#1E90FF" },
   { kind: "star", x: 86, from: 105, to: -95, rotate: 45, size: 1.1, color: "#FFE500" },
-  { kind: "squiggle", x: 36, from: 140, to: -70, rotate: 12, size: 0.9, color: INK, front: true },
+  { kind: "squiggle", x: 36, from: 140, to: -70, rotate: 12, size: 0.9, color: "#f786b5", front: true },
   { kind: "half", x: 64, from: 165, to: -85, rotate: -30, size: 0.95, color: "#8A86F7" },
   { kind: "triangle", x: 22, from: 210, to: -60, rotate: 40, size: 0.9, color: "#FF6B5B" },
   { kind: "zigzag", x: 78, from: 235, to: -75, rotate: -10, size: 0.85, color: "#16D5C0", front: true },
