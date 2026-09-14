@@ -70,12 +70,16 @@ export default function TransitionWrapper() {
 
   return (
     <>
+      {/* <SplashScreen /> */}
       <Sidebar currentSection={currentSection} />
       <Navbar currentSection={currentSection} />
       <AnimatePresence mode="sync">
         <motion.div
           key={currentPage}
           variants={variants}
+          // initial="initial"
+          // animate="animate"
+          // exit="exit"
           style={{
             ...(isTransitioning
               ? { position: "fixed", inset: 0 }

@@ -679,7 +679,7 @@ textarea {
   display: flex;
   gap: 0.25em;
   margin: 0;
-  font-size: clamp(3.5rem, 15vw, 16rem);
+  font-size: clamp(3.5rem, 15vw, 13rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
   white-space: nowrap;
