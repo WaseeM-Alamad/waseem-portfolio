@@ -129,10 +129,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects">
+    <section className="projects">
       {/* Full-width scroll message; must not sit inside the controls row or it shrinks to the text width. */}
       <ProjectsHeading words={t("heading").split(" ")} rtl={isAr} />
-      <div>
+      <div id="projects">
         <div className="projects-controls-wrapper">
           {/* <div className="projects-controls-title">Things I've built</div> */}
           <div

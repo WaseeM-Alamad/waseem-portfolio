@@ -117,8 +117,6 @@ html[lang="ar"] .lang-flip {
 
 main {
   background: var(--color-primary);
-  /* `clip` instead of `hidden`: same clipping, but it doesn't turn <main> into a scroll
-     container, which would stop position: sticky (the projects scroll message) from pinning. */
   overflow: clip;
   transition: all 0.5s ease;
 }
@@ -137,7 +135,6 @@ main {
   height: 100%;
 }
 section {
-  /* min-height: 50rem; */
   color: var(--color-text-primary);
   font-size: 3rem;
   font-weight: 500;
@@ -211,14 +208,12 @@ section > * {
   width: 100%;
   min-height: 100dvh;
   position: relative;
-  /* overflow: hidden; */
   box-sizing: border-box;
 }
 
 .panel-inner {
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
 }
 
 .panel-home {
@@ -236,7 +231,6 @@ section > * {
   background: var(--color-bg);
   border-top-left-radius: clamp(2.1875rem, 4vw, 3.5rem);
   border-top-right-radius: clamp(2.1875rem, 4vw, 3.5rem);
-  /* padding-top: 6rem; */
   transition:
     color 0.5s ease,
     background-color 0.5s ease;
@@ -260,7 +254,6 @@ section > * {
 
 .about-point {
   display: flex;
-  /* align-items: center; */
   font-size: clamp(1.2rem, 3vw, 1.875rem);
   gap: clamp(0.5rem, 3vw, 1.5rem);
 }
@@ -282,7 +275,6 @@ section > * {
   padding: 0 15% !important;
   margin-inline-start: var(--sidebar-width);
   overflow: hidden;
-  /* max-height: 2496px; */
 }
 
 .skill-point {
@@ -329,18 +321,13 @@ main > *:nth-child(2) {
   background-color: #50fc98;
   border-radius: clamp(2.1875rem, 4vw, 3.5rem);
   padding-bottom: 0 !important;
-  /* padding-inline-start: calc(var(--sidebar-width)  + clamp(.5rem, 7vw, 5rem)) !important; */
-  /* padding-inline-end: 5rem !important; */
-  /* padding-right: 0; */
 }
 
 .contact {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: wrap; */
   gap: 8vw;
-  /* min-height: 93vh; */
   padding: 7rem 7rem;
   padding-bottom: 0 !important;
   margin-bottom: 0rem;
@@ -393,9 +380,6 @@ textarea {
 
 .table-phone {
   display: flex;
-  /* padding-inline-start: calc(
-    var(--sidebar-width) + clamp(0.5rem, 7vw, 5rem)
-  ) !important; */
 }
 
 .contact-box {
@@ -451,12 +435,16 @@ textarea {
   margin-top: 3rem;
 }
 
-#projects {
+.projects {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 7rem 0 !important;
   padding-bottom: 20rem !important;
+}
+
+#projects {
+  padding-top: 1rem;
 }
 
 .projects-controls-wrapper {
@@ -605,10 +593,6 @@ textarea {
 }
 
 @media (max-width: 510px) {
-  #skills > .colored-card:first-child {
-    /* padding-top: 0 !important; */
-  }
-
   #skills {
     padding-left: 1.2rem !important;
     padding-right: 1.2rem !important;
@@ -642,14 +626,11 @@ textarea {
   }
 }
 
-
-/* The section is taller than the screen; the stage pins while you scroll through it. */
 .scroll-message {
   position: relative;
-  height: var(--scroll-length, 300vh);
-  /* Clip sideways only: no horizontal scrollbar, shapes are never cut vertically.
-     `clip` (unlike `hidden`) doesn't break position: sticky. */
+  height: 300vh;
   overflow-x: clip;
+  margin-block: -40vh;
 }
 
 .scroll-message--static {
@@ -664,12 +645,9 @@ textarea {
   height: 100vh;
   display: grid;
   place-items: center;
-  /* Center the text in the space next to the sidebar, like the other sections. */
   padding-inline-start: var(--sidebar-width);
   box-sizing: border-box;
 }
-
-/* Message */
 
 .scroll-message__text {
   position: relative;
@@ -685,10 +663,6 @@ textarea {
   white-space: nowrap;
 }
 
-/* The line each word rises from. The padding (cancelled out by the negative margins, so the
-   layout doesn't change) gives tall letters and descenders room, and the gradient softens the
-   bottom edge instead of cutting hard. */
-/* Letter spacing pulls joined Arabic letters apart. */
 .scroll-message--rtl .scroll-message__text {
   letter-spacing: normal;
 }
@@ -696,8 +670,6 @@ textarea {
 .scroll-message__word {
   display: inline-block;
 }
-
-/* Floating shapes */
 
 .scroll-message__shape {
   position: absolute;
